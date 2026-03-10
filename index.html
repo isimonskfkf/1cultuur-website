@@ -2,627 +2,634 @@
 <html lang="nl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="1cultuur Media Groep — Het mediahuis dat de brug slaat tussen de straat en de professionele wereld.">
 <title>1cultuur Media Groep</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e2c278;
-    --black: #080808;
-    --surface: #111111;
-    --surface2: #181818;
-    --white: #f5f2ec;
-    --grey: #888;
-    --border: rgba(201,168,76,0.15);
-  }
+/* ─── RESET & BASE ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --gold:       #c9a84c;
+  --gold-light: #e2c278;
+  --black:      #080808;
+  --surf1:      #111111;
+  --surf2:      #161616;
+  --white:      #f5f2ec;
+  --grey:       #7a7a7a;
+  --border:     rgba(201,168,76,0.18);
 
-  html { scroll-behavior: smooth; }
+  /* fluid spacing */
+  --px:  clamp(20px, 5vw, 72px);
+  --py:  clamp(64px, 10vw, 128px);
+}
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    overflow-x: hidden;
-    cursor: none;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
 
-  /* CUSTOM CURSOR */
-  .cursor {
-    position: fixed;
-    width: 10px; height: 10px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px; height: 36px;
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s ease-out, width 0.3s, height 0.3s;
-    opacity: 0.6;
-  }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  min-width: 320px;
+}
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px 48px;
-    backdrop-filter: blur(12px);
-    background: rgba(8,8,8,0.7);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s;
-  }
-  nav.scrolled { border-color: var(--border); }
+img, svg { display: block; max-width: 100%; }
 
-  .nav-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 3px;
-    color: var(--white);
-    text-decoration: none;
-  }
-  .nav-logo span { color: var(--gold); }
+a { color: inherit; text-decoration: none; }
 
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--grey);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
+/* ─── CURSOR (desktop only) ────────────────────────────────────── */
+.cur-dot, .cur-ring {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: none; /* hidden until JS enables */
+}
+.cur-dot  { width: 9px;  height: 9px;  background: var(--gold); transition: transform .1s; }
+.cur-ring { width: 34px; height: 34px; border: 1px solid rgba(201,168,76,.55); transition: width .25s, height .25s; }
 
-  .nav-cta {
-    font-family: 'Syne', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--gold);
-    padding: 10px 22px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+@media (hover: hover) and (pointer: fine) {
+  .cur-dot, .cur-ring { display: block; }
+  body { cursor: none; }
+  a, button, .card { cursor: none; }
+}
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
+/* ─── NAV ───────────────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px var(--px);
+  background: rgba(8,8,8,.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+  gap: 16px;
+}
+.nav.solid { border-color: var(--border); }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
-  }
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(18px, 3vw, 22px);
+  letter-spacing: 3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-logo span { color: var(--gold); }
 
-  .hero-line {
-    position: absolute;
-    top: 0; bottom: 0;
-    left: 48px;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
-    opacity: 0.2;
-  }
+.nav-links {
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+  list-style: none;
+}
+.nav-links a {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold); }
 
-  .hero-tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 28px;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.3s;
-  }
+.nav-cta {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  padding: 10px 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
 
-  .hero-headline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(72px, 10vw, 148px);
-    line-height: 0.92;
-    letter-spacing: -1px;
-    max-width: 900px;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 0.5s;
-  }
+/* hide nav-links on small screens */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+}
 
-  .hero-headline em {
-    font-style: normal;
-    color: var(--gold);
-  }
+/* ─── HERO ──────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100svh; /* svh = safe viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: calc(80px + 5vw) var(--px) clamp(48px, 8vw, 88px);
+  overflow: hidden;
+}
 
-  .hero-headline .outline {
-    -webkit-text-stroke: 1px rgba(245,242,236,0.25);
-    color: transparent;
-  }
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 75% 45%, rgba(201,168,76,.07) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 55% at 15% 85%, rgba(201,168,76,.04) 0%, transparent 60%);
+  pointer-events: none;
+}
 
-  .hero-sub {
-    max-width: 520px;
-    font-size: 16px;
-    line-height: 1.7;
-    color: rgba(245,242,236,0.55);
-    margin-top: 32px;
-    font-weight: 300;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 0.7s;
-  }
+.hero-accent {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: var(--px);
+  width: 1px;
+  background: linear-gradient(to bottom, transparent 5%, var(--gold) 35%, var(--gold) 65%, transparent 95%);
+  opacity: .18;
+}
 
-  .hero-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 60px;
-    opacity: 0;
-    animation: fadeUp 1s ease forwards 0.9s;
-  }
+.hero-kicker {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: clamp(20px, 4vw, 32px);
+  opacity: 0;
+  animation: fadeUp .7s ease forwards .25s;
+}
 
-  .hero-scroll {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--grey);
-  }
-  .scroll-line {
-    width: 40px;
-    height: 1px;
-    background: var(--gold);
-    animation: pulse 2s ease infinite;
-  }
+.hero-h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 12vw, 148px);
+  line-height: .93;
+  letter-spacing: .5px;
+  max-width: 14ch;
+  opacity: 0;
+  animation: fadeUp .9s ease forwards .45s;
+}
+.hero-h1 em   { font-style: normal; color: var(--gold); }
+.hero-h1 .out {
+  -webkit-text-stroke: 1px rgba(245,242,236,.22);
+  color: transparent;
+}
 
-  .hero-badge {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--grey);
-    border: 1px solid var(--border);
-    padding: 12px 20px;
-  }
+.hero-sub {
+  margin-top: clamp(20px, 4vw, 36px);
+  max-width: 52ch;
+  font-size: clamp(14px, 2vw, 17px);
+  line-height: 1.7;
+  color: rgba(245,242,236,.5);
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp .9s ease forwards .65s;
+}
 
-  /* STATS */
-  .stats-bar {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: stretch;
-  }
+.hero-foot {
+  margin-top: clamp(36px, 6vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp .9s ease forwards .85s;
+}
 
-  .stat-item {
-    flex: 1;
-    padding: 52px 48px;
-    border-right: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-  .stat-item:last-child { border-right: none; }
-  .stat-item:hover { background: var(--surface2); }
-  .stat-item::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
-    transform-origin: left;
-  }
-  .stat-item:hover::before { transform: scaleX(1); }
+.hero-scroll {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.scroll-bar {
+  width: 36px; height: 1px;
+  background: var(--gold);
+  animation: blink 2s ease infinite;
+}
 
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 64px;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 2px;
-  }
+.hero-badge {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+}
 
-  .stat-label {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--grey);
-    margin-top: 8px;
-  }
+/* ─── STATS BAR ─────────────────────────────────────────────────── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: var(--surf1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
 
-  /* SECTION BASE */
-  section { padding: 120px 48px; }
+@media (max-width: 720px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
 
-  .section-tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 48px;
-  }
-  .section-tag::after {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--gold);
-  }
+.stat {
+  padding: clamp(28px, 5vw, 52px) clamp(20px, 4vw, 48px);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.stat:hover { background: var(--surf2); }
+.stat::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.stat:hover::after { transform: scaleX(1); }
 
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 6vw, 80px);
-    line-height: 1;
-    letter-spacing: 1px;
-  }
+/* remove right border on last of each row */
+@media (max-width: 720px) {
+  .stat:nth-child(2n) { border-right: none; }
+  .stat:nth-child(1),
+  .stat:nth-child(2)  { border-bottom: 1px solid var(--border); }
+}
+@media (min-width: 721px) {
+  .stat:last-child { border-right: none; }
+}
 
-  /* DIENSTEN */
-  #diensten { background: var(--black); }
+.stat-n {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(40px, 6vw, 64px);
+  color: var(--gold);
+  line-height: 1;
+  letter-spacing: 2px;
+}
+.stat-l {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-top: 6px;
+}
 
-  .diensten-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: end;
-    margin-bottom: 80px;
-  }
+/* ─── SECTION SHELL ─────────────────────────────────────────────── */
+.sec {
+  padding: var(--py) var(--px);
+}
+.sec-tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: clamp(28px, 5vw, 52px);
+}
+.sec-tag::after { content: ''; width: 28px; height: 1px; background: var(--gold); flex-shrink: 0; }
 
-  .diensten-intro {
-    font-size: 15px;
-    line-height: 1.8;
-    color: rgba(245,242,236,0.5);
-    font-weight: 300;
-    max-width: 420px;
-  }
+.sec-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 1;
+  letter-spacing: .5px;
+}
 
-  .diensten-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    background: var(--border);
-  }
+/* ─── DIENSTEN ──────────────────────────────────────────────────── */
+#diensten { background: var(--black); }
 
-  .dienst-card {
-    background: var(--surface);
-    padding: 52px 40px;
-    position: relative;
-    overflow: hidden;
-    cursor: none;
-    transition: background 0.3s;
-  }
-  .dienst-card:hover { background: #161616; }
+.diensten-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 6vw, 80px);
+  align-items: end;
+  margin-bottom: clamp(40px, 7vw, 80px);
+}
+@media (max-width: 680px) {
+  .diensten-top { grid-template-columns: 1fr; }
+}
 
-  .dienst-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    color: rgba(201,168,76,0.08);
-    position: absolute;
-    top: -10px; right: 24px;
-    line-height: 1;
-    transition: color 0.3s;
-  }
-  .dienst-card:hover .dienst-num { color: rgba(201,168,76,0.15); }
+.diensten-intro {
+  font-size: clamp(13px, 1.8vw, 15px);
+  line-height: 1.8;
+  color: rgba(245,242,236,.45);
+  font-weight: 300;
+}
 
-  .dienst-icon {
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 28px;
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .dienst-card:hover .dienst-icon {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.08);
-  }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+@media (max-width: 840px) {
+  .cards { grid-template-columns: 1fr; }
+}
+@media (min-width: 481px) and (max-width: 840px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
 
-  .dienst-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+.card {
+  background: var(--surf1);
+  padding: clamp(32px, 5vw, 52px) clamp(24px, 4vw, 40px);
+  position: relative;
+  overflow: hidden;
+  transition: background .3s;
+}
+.card:hover { background: var(--surf2); }
 
-  .dienst-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: var(--white);
-  }
+.card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 8vw, 88px);
+  color: rgba(201,168,76,.07);
+  position: absolute;
+  top: -8px; right: 16px;
+  line-height: 1;
+  transition: color .3s;
+  user-select: none;
+}
+.card:hover .card-num { color: rgba(201,168,76,.14); }
 
-  .dienst-desc {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--grey);
-    font-weight: 300;
-  }
+.card-icon {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: clamp(20px, 3vw, 28px);
+  transition: border-color .3s, background .3s;
+  flex-shrink: 0;
+}
+.card:hover .card-icon {
+  border-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+.card-icon svg { width: 17px; height: 17px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 
-  .dienst-arrow {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 32px;
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .dienst-card:hover .dienst-arrow { opacity: 1; transform: translateX(0); }
+.card-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
 
-  /* RESULTATEN */
-  #resultaten {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
+.card-desc {
+  font-size: clamp(13px, 1.6vw, 14px);
+  line-height: 1.75;
+  color: var(--grey);
+  font-weight: 300;
+}
 
-  .resultaten-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--border);
-    margin-top: 64px;
-  }
+.card-more {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: clamp(20px, 3vw, 32px);
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity .3s, transform .3s;
+}
+.card:hover .card-more { opacity: 1; transform: none; }
 
-  .case-card {
-    background: var(--black);
-    padding: 56px 48px;
-    position: relative;
-    overflow: hidden;
-  }
+/* ─── RESULTATEN ────────────────────────────────────────────────── */
+#resultaten {
+  background: var(--surf1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
 
-  .case-tag {
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 20px;
-  }
+.cases {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  margin-top: clamp(40px, 6vw, 64px);
+}
+@media (max-width: 600px) {
+  .cases { grid-template-columns: 1fr; }
+}
 
-  .case-result {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 56px;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 16px;
-  }
+.case {
+  background: var(--black);
+  padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px);
+  position: relative;
+  overflow: hidden;
+}
 
-  .case-desc {
-    font-size: 14px;
-    line-height: 1.7;
-    color: var(--grey);
-    font-weight: 300;
-    max-width: 380px;
-  }
+.case-tag {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
 
-  .case-bar {
-    position: absolute;
-    bottom: 0; left: 0;
-    height: 3px;
-    background: var(--gold);
-    width: 0;
-    transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
-  }
-  .case-card.bar-animate:nth-child(1) .case-bar { width: 82%; }
-  .case-card.bar-animate:nth-child(2) .case-bar { width: 65%; }
-  .case-card.bar-animate:nth-child(3) .case-bar { width: 91%; }
-  .case-card.bar-animate:nth-child(4) .case-bar { width: 74%; }
+.case-big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1;
+  margin-bottom: 14px;
+}
 
-  /* CTA */
-  #contact {
-    background: var(--black);
-    text-align: center;
-    padding: 160px 48px;
-    position: relative;
-    overflow: hidden;
-  }
+.case-desc {
+  font-size: clamp(13px, 1.6vw, 14px);
+  line-height: 1.75;
+  color: var(--grey);
+  font-weight: 300;
+  max-width: 38ch;
+}
 
-  .cta-bg {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
+.case-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 3px;
+  background: var(--gold);
+  width: 0;
+  transition: width 1.4s cubic-bezier(.4,0,.2,1);
+}
 
-  .cta-super {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 32px;
-  }
+/* ─── CTA ───────────────────────────────────────────────────────── */
+#contact {
+  background: var(--black);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 65% 65% at 50% 50%, rgba(201,168,76,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
 
-  .cta-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(52px, 8vw, 112px);
-    line-height: 0.95;
-    margin-bottom: 32px;
-  }
+.cta-kicker {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: clamp(20px, 4vw, 32px);
+}
 
-  .cta-title span { color: var(--gold); }
+.cta-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(48px, 9vw, 112px);
+  line-height: .93;
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+.cta-h2 span { color: var(--gold); }
 
-  .cta-sub {
-    font-size: 15px;
-    color: rgba(245,242,236,0.45);
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: 480px;
-    margin: 0 auto 52px;
-  }
+.cta-sub {
+  font-size: clamp(13px, 1.8vw, 15px);
+  color: rgba(245,242,236,.42);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 46ch;
+  margin: 0 auto clamp(36px, 6vw, 52px);
+}
 
-  .cta-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+.btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--black);
-    background: var(--gold);
-    padding: 18px 36px;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+  white-space: nowrap;
+}
+.btn svg { flex-shrink: 0; }
 
-  .btn-ghost {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--white);
-    background: transparent;
-    border: 1px solid rgba(245,242,236,0.15);
-    padding: 18px 36px;
-    transition: border-color 0.2s, color 0.2s, transform 0.2s;
-  }
-  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.btn-gold {
+  background: var(--gold);
+  color: var(--black);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
 
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(245,242,236,.15);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 18px;
-    letter-spacing: 3px;
-    color: var(--white);
-  }
-  .footer-logo span { color: var(--gold); }
+/* ─── FOOTER ────────────────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: clamp(24px, 4vw, 36px) var(--px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-  .footer-copy {
-    font-size: 12px;
-    color: rgba(245,242,236,0.25);
-    font-family: 'Syne', sans-serif;
-    letter-spacing: 1px;
-  }
+.foot-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 17px;
+  letter-spacing: 3px;
+}
+.foot-logo span { color: var(--gold); }
 
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  .footer-links a {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--grey);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--gold); }
+.foot-copy {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  color: rgba(245,242,236,.22);
+  letter-spacing: 1px;
+}
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+.foot-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.foot-links a {
+  font-family: 'Syne', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--grey);
+  transition: color .2s;
+}
+.foot-links a:hover { color: var(--gold); }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
-  }
+/* ─── ANIMATIONS ────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: .35; }
+}
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity .75s ease, transform .75s ease;
+}
+.reveal.on { opacity: 1; transform: none; }
 
-  /* MOBILE */
-  @media (max-width: 768px) {
-    nav { padding: 20px 24px; }
-    .nav-links, .nav-cta { display: none; }
-    .hero { padding: 0 24px 60px; }
-    section { padding: 80px 24px; }
-    .diensten-header { grid-template-columns: 1fr; gap: 32px; }
-    .diensten-grid { grid-template-columns: 1fr; }
-    .resultaten-grid { grid-template-columns: 1fr; }
-    .stats-bar { flex-direction: column; }
-    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-    footer { flex-direction: column; gap: 20px; text-align: center; }
-    .cta-buttons { flex-direction: column; align-items: center; }
-  }
+/* ─── UTILITY ───────────────────────────────────────────────────── */
+/* Prevent text overflow globally */
+p, h1, h2, h3, li, span, a, div {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
 </style>
 </head>
 
 <body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<!-- CURSOR -->
+<div class="cur-dot"  id="cDot"></div>
+<div class="cur-ring" id="cRing"></div>
 
 <!-- NAV -->
-<nav id="mainNav">
+<nav class="nav" id="nav">
   <a href="#" class="nav-logo"><span>1</span>cultuur</a>
   <ul class="nav-links">
     <li><a href="#diensten">Diensten</a></li>
@@ -634,24 +641,24 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-line"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-accent"></div>
 
-  <div class="hero-tag">Amsterdam · Nederland · België</div>
+  <p class="hero-kicker">Amsterdam · Nederland · België</p>
 
-  <h1 class="hero-headline">
+  <h1 class="hero-h1">
     De straat<br>
     <em>spreekt.</em><br>
-    <span class="outline">Jij ook.</span>
+    <span class="out">Jij ook.</span>
   </h1>
 
   <p class="hero-sub">
     1cultuur slaat de brug tussen straatcultuur en merken die er écht bij willen horen. Geen campagnes — verhalen die blijven hangen.
   </p>
 
-  <div class="hero-bottom">
+  <div class="hero-foot">
     <div class="hero-scroll">
-      <div class="scroll-line"></div>
+      <div class="scroll-bar"></div>
       Scroll
     </div>
     <div class="hero-badge">Est. 2024 — NL / BE</div>
@@ -659,133 +666,136 @@
 </section>
 
 <!-- STATS -->
-<div class="stats-bar">
-  <div class="stat-item reveal">
-    <div class="stat-num">7M+</div>
-    <div class="stat-label">Views per maand</div>
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-n">7M+</div>
+    <div class="stat-l">Views per maand</div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.1s">
-    <div class="stat-num">1.8M</div>
-    <div class="stat-label">Likes</div>
+  <div class="stat reveal" style="transition-delay:.08s">
+    <div class="stat-n">1.8M</div>
+    <div class="stat-l">Likes</div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.2s">
-    <div class="stat-num">18–30</div>
-    <div class="stat-label">Stedelijke doelgroep</div>
+  <div class="stat reveal" style="transition-delay:.16s">
+    <div class="stat-n">18–30</div>
+    <div class="stat-l">Stedelijke doelgroep</div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.3s">
-    <div class="stat-num">NL+BE</div>
-    <div class="stat-label">Actieve markten</div>
+  <div class="stat reveal" style="transition-delay:.24s">
+    <div class="stat-n">NL+BE</div>
+    <div class="stat-l">Actieve markten</div>
   </div>
 </div>
 
 <!-- DIENSTEN -->
-<section id="diensten">
-  <div class="diensten-header">
+<section class="sec" id="diensten">
+  <div class="diensten-top">
     <div>
-      <div class="section-tag reveal">Wat we doen</div>
-      <h2 class="section-title reveal">Formats<br>die raken.</h2>
+      <div class="sec-tag reveal">Wat we doen</div>
+      <h2 class="sec-h2 reveal">Formats<br>die raken.</h2>
     </div>
     <p class="diensten-intro reveal">
       Merken die met 1cultuur werken kopen geen advertentieruimte. Ze kopen een plek in de cultuur. Dat verschil is meetbaar.
     </p>
   </div>
 
-  <div class="diensten-grid">
-    <div class="dienst-card reveal">
-      <div class="dienst-num">01</div>
-      <div class="dienst-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  <div class="cards">
+    <!-- 01 -->
+    <div class="card reveal">
+      <div class="card-num">01</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
-      <div class="dienst-name">Branded Storytelling</div>
-      <div class="dienst-desc">Jouw merk wordt onderdeel van een verhaal dat de doelgroep al volgt. Geen onderbreking — een toegevoegde laag aan de content.</div>
-      <div class="dienst-arrow">
+      <div class="card-name">Branded Storytelling</div>
+      <p class="card-desc">Jouw merk wordt onderdeel van een verhaal dat de doelgroep al volgt. Geen onderbreking — een toegevoegde laag aan de content.</p>
+      <div class="card-more">
         Meer info
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
     </div>
 
-    <div class="dienst-card reveal" style="transition-delay:0.1s">
-      <div class="dienst-num">02</div>
-      <div class="dienst-icon">
+    <!-- 02 -->
+    <div class="card reveal" style="transition-delay:.1s">
+      <div class="card-num">02</div>
+      <div class="card-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
       </div>
-      <div class="dienst-name">Strategische Product Placement</div>
-      <div class="dienst-desc">Je product zit in de context waar de doelgroep het wil zien. Authentiek, onopvallend en effectief — geen post-it marketing.</div>
-      <div class="dienst-arrow">
+      <div class="card-name">Strategische Product Placement</div>
+      <p class="card-desc">Je product zit in de context waar de doelgroep het wil zien. Authentiek, onopvallend en effectief — geen post-it marketing.</p>
+      <div class="card-more">
         Meer info
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
     </div>
 
-    <div class="dienst-card reveal" style="transition-delay:0.2s">
-      <div class="dienst-num">03</div>
-      <div class="dienst-icon">
-        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    <!-- 03 -->
+    <div class="card reveal" style="transition-delay:.2s">
+      <div class="card-num">03</div>
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
       </div>
-      <div class="dienst-name">High-Impact Series</div>
-      <div class="dienst-desc">Terugkerende formats die loyaliteit opbouwen. Jouw merk verschijnt elke aflevering — in een context die groeit, niet krimpt.</div>
-      <div class="dienst-arrow">
+      <div class="card-name">High-Impact Series</div>
+      <p class="card-desc">Terugkerende formats die loyaliteit opbouwen. Jouw merk verschijnt elke aflevering — in een context die groeit, niet krimpt.</p>
+      <div class="card-more">
         Meer info
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
     </div>
   </div>
 </section>
 
 <!-- RESULTATEN -->
-<section id="resultaten">
-  <div class="section-tag reveal">Bewezen impact</div>
-  <h2 class="section-title reveal">Geen claims.<br>Cijfers.</h2>
+<section class="sec" id="resultaten">
+  <div class="sec-tag reveal">Bewezen impact</div>
+  <h2 class="sec-h2 reveal">Geen claims.<br>Cijfers.</h2>
 
-  <div class="resultaten-grid">
-    <div class="case-card reveal">
+  <div class="cases">
+    <div class="case reveal">
       <div class="case-tag">Branded Storytelling</div>
-      <div class="case-result">2.3M views</div>
+      <div class="case-big">2.3M views</div>
       <p class="case-desc">Eén geïntegreerde video-serie met een sportmerk genereerde meer organisch bereik dan hun eigen kanaal dat kwartaal.</p>
-      <div class="case-bar"></div>
+      <div class="case-bar" data-w="82"></div>
     </div>
 
-    <div class="case-card reveal" style="transition-delay:0.1s">
+    <div class="case reveal" style="transition-delay:.1s">
       <div class="case-tag">Product Placement</div>
-      <div class="case-result">+340% CTR</div>
-      <p class="case-desc">Contextplaatsing in streetwear-content presteerde 3,4x beter dan standaard influencer-posts van hetzelfde merk.</p>
-      <div class="case-bar"></div>
+      <div class="case-big">+340% CTR</div>
+      <p class="case-desc">Contextplaatsing in streetwear-content presteerde 3,4× beter dan standaard influencer-posts van hetzelfde merk.</p>
+      <div class="case-bar" data-w="65"></div>
     </div>
 
-    <div class="case-card reveal" style="transition-delay:0.2s">
+    <div class="case reveal" style="transition-delay:.2s">
       <div class="case-tag">High-Impact Series</div>
-      <div class="case-result">18 afleveringen</div>
+      <div class="case-big">18 afleveringen</div>
       <p class="case-desc">Format liep 6 maanden, gemiddeld 400K views per aflevering. Sponsormerk groeide mee met het publiek.</p>
-      <div class="case-bar"></div>
+      <div class="case-bar" data-w="91"></div>
     </div>
 
-    <div class="case-card reveal" style="transition-delay:0.3s">
+    <div class="case reveal" style="transition-delay:.3s">
       <div class="case-tag">Community</div>
-      <div class="case-result">87% retentie</div>
+      <div class="case-big">87% retentie</div>
       <p class="case-desc">Doelgroep 18–30 in NL/BE. Hoge terugkeer per format — het publiek kiest, niet de algoritmen.</p>
-      <div class="case-bar"></div>
+      <div class="case-bar" data-w="74"></div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="contact">
-  <div class="cta-bg"></div>
-  <div class="cta-super reveal">Klaar om te werken?</div>
-  <h2 class="cta-title reveal">
-    Jouw merk.<br>
-    <span>Onze cultuur.</span>
-  </h2>
-  <p class="cta-sub reveal">
-    We werken met een beperkt aantal partners per kwartaal. Stuur een bericht — dan kijken we of er een match is.
-  </p>
-  <div class="cta-buttons reveal">
-    <a href="https://wa.me/31600000000?text=Hey%201cultuur%2C%20ik%20wil%20samenwerken" class="btn-primary" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<section class="sec" id="contact">
+  <div class="cta-glow"></div>
+  <p class="cta-kicker reveal">Klaar om te werken?</p>
+  <h2 class="cta-h2 reveal">Jouw merk.<br><span>Onze cultuur.</span></h2>
+  <p class="cta-sub reveal">We werken met een beperkt aantal partners per kwartaal. Stuur een bericht — dan kijken we of er een match is.</p>
+  <div class="btns reveal">
+    <a href="https://wa.me/31600000000?text=Hey%201cultuur%2C%20ik%20wil%20graag%20samenwerken" class="btn btn-gold" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
       WhatsApp
     </a>
-    <a href="mailto:contact@1cultuur.nl" class="btn-ghost">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <a href="mailto:contact@1cultuur.nl" class="btn btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
       E-mail sturen
     </a>
   </div>
@@ -793,70 +803,86 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><span>1</span>cultuur Media Groep</div>
-  <div class="footer-copy">© 2026 1cultuur. All rights reserved.</div>
-  <ul class="footer-links">
-    <li><a href="#">Instagram</a></li>
-    <li><a href="#">TikTok</a></li>
-    <li><a href="#">YouTube</a></li>
+  <div class="foot-logo"><span>1</span>cultuur Media Groep</div>
+  <p class="foot-copy">© 2026 1cultuur. All rights reserved.</p>
+  <ul class="foot-links">
+    <li><a href="#" aria-label="Instagram">Instagram</a></li>
+    <li><a href="#" aria-label="TikTok">TikTok</a></li>
+    <li><a href="#" aria-label="YouTube">YouTube</a></li>
   </ul>
 </footer>
 
 <script>
-  // CUSTOM CURSOR
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+(function () {
+  'use strict';
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top  = my + 'px';
-  });
+  /* ── CURSOR — only on non-touch hover devices ── */
+  const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  (function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animateRing);
-  })();
+  if (hasHover) {
+    const dot  = document.getElementById('cDot');
+    const ring = document.getElementById('cRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
 
-  document.querySelectorAll('a, button, .dienst-card, .stat-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
-      ring.style.width = '56px';
-      ring.style.height = '56px';
-      ring.style.opacity = '0.3';
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx + 'px';
+      dot.style.top  = my + 'px';
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-      ring.style.opacity = '0.6';
+
+    (function tick() {
+      rx += (mx - rx) * .12;
+      ry += (my - ry) * .12;
+      ring.style.left = rx + 'px';
+      ring.style.top  = ry + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    var hoverEls = document.querySelectorAll('a, button, .card, .stat');
+    hoverEls.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        dot.style.transform  = 'translate(-50%,-50%) scale(2.4)';
+        ring.style.width  = '52px';
+        ring.style.height = '52px';
+      });
+      el.addEventListener('mouseleave', function () {
+        dot.style.transform  = 'translate(-50%,-50%) scale(1)';
+        ring.style.width  = '34px';
+        ring.style.height = '34px';
+      });
     });
-  });
+  }
 
-  // SCROLL NAV BORDER
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
-  });
+  /* ── NAV BORDER ON SCROLL ── */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('solid', window.scrollY > 50);
+  }, { passive: true });
 
-  // SCROLL REVEAL + BAR ANIMATION
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        if (e.target.classList.contains('case-card')) {
-          e.target.classList.add('bar-animate');
-        }
-      }
+  /* ── SCROLL REVEAL + CASE BARS ── */
+  var reveals = document.querySelectorAll('.reveal');
+  var bars    = document.querySelectorAll('.case-bar');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('on');
+      io.unobserve(e.target);
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.14 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  document.querySelectorAll('.case-card').forEach(el => observer.observe(el));
+  var barIO = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.style.width = (e.target.dataset.w || 0) + '%';
+      barIO.unobserve(e.target);
+    });
+  }, { threshold: 0.3 });
+
+  reveals.forEach(function (el) { io.observe(el); });
+  bars.forEach(function (el) { barIO.observe(el); });
+
+})();
 </script>
-
 </body>
 </html>
