@@ -4,95 +4,859 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>1cultuur Media Groep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
 <style>
-body{
-font-family: Arial, sans-serif;
-margin:0;
-background:#0b0b0b;
-color:white;
-}
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #e2c278;
+    --black: #080808;
+    --surface: #111111;
+    --surface2: #181818;
+    --white: #f5f2ec;
+    --grey: #888;
+    --border: rgba(201,168,76,0.15);
+  }
 
-header{
-padding:100px 20px;
-text-align:center;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-h1{
-font-size:48px;
-margin-bottom:20px;
-}
+  html { scroll-behavior: smooth; }
 
-p{
-max-width:700px;
-margin:auto;
-font-size:20px;
-line-height:1.6;
-}
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-.section{
-padding:80px 20px;
-text-align:center;
-}
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed;
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, opacity 0.3s;
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 36px; height: 36px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease-out, width 0.3s, height 0.3s;
+    opacity: 0.6;
+  }
 
-.stats{
-display:flex;
-justify-content:center;
-gap:60px;
-flex-wrap:wrap;
-margin-top:40px;
-}
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 48px;
+    backdrop-filter: blur(12px);
+    background: rgba(8,8,8,0.7);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav.scrolled { border-color: var(--border); }
 
-.stat{
-font-size:36px;
-font-weight:bold;
-}
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
 
-button{
-padding:16px 32px;
-font-size:18px;
-background:white;
-color:black;
-border:none;
-cursor:pointer;
-margin-top:30px;
-}
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--gold);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+  }
+
+  .hero-line {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 48px;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+    opacity: 0.2;
+  }
+
+  .hero-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 148px);
+    line-height: 0.92;
+    letter-spacing: -1px;
+    max-width: 900px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.5s;
+  }
+
+  .hero-headline em {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .hero-headline .outline {
+    -webkit-text-stroke: 1px rgba(245,242,236,0.25);
+    color: transparent;
+  }
+
+  .hero-sub {
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(245,242,236,0.55);
+    margin-top: 32px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.7s;
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards 0.9s;
+  }
+
+  .hero-scroll {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+  }
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    animation: pulse 2s ease infinite;
+  }
+
+  .hero-badge {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+  }
+
+  /* STATS */
+  .stats-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: stretch;
+  }
+
+  .stat-item {
+    flex: 1;
+    padding: 52px 48px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: var(--surface2); }
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+  .stat-item:hover::before { transform: scaleX(1); }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+
+  .stat-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-top: 8px;
+  }
+
+  /* SECTION BASE */
+  section { padding: 120px 48px; }
+
+  .section-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .section-tag::after {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: 1px;
+  }
+
+  /* DIENSTEN */
+  #diensten { background: var(--black); }
+
+  .diensten-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+    margin-bottom: 80px;
+  }
+
+  .diensten-intro {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(245,242,236,0.5);
+    font-weight: 300;
+    max-width: 420px;
+  }
+
+  .diensten-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+
+  .dienst-card {
+    background: var(--surface);
+    padding: 52px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    transition: background 0.3s;
+  }
+  .dienst-card:hover { background: #161616; }
+
+  .dienst-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: rgba(201,168,76,0.08);
+    position: absolute;
+    top: -10px; right: 24px;
+    line-height: 1;
+    transition: color 0.3s;
+  }
+  .dienst-card:hover .dienst-num { color: rgba(201,168,76,0.15); }
+
+  .dienst-icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 28px;
+    transition: border-color 0.3s, background 0.3s;
+  }
+  .dienst-card:hover .dienst-icon {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .dienst-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+  .dienst-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+
+  .dienst-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey);
+    font-weight: 300;
+  }
+
+  .dienst-arrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .dienst-card:hover .dienst-arrow { opacity: 1; transform: translateX(0); }
+
+  /* RESULTATEN */
+  #resultaten {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .resultaten-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-top: 64px;
+  }
+
+  .case-card {
+    background: var(--black);
+    padding: 56px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .case-result {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .case-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--grey);
+    font-weight: 300;
+    max-width: 380px;
+  }
+
+  .case-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: var(--gold);
+    width: 0;
+    transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  .case-card.bar-animate:nth-child(1) .case-bar { width: 82%; }
+  .case-card.bar-animate:nth-child(2) .case-bar { width: 65%; }
+  .case-card.bar-animate:nth-child(3) .case-bar { width: 91%; }
+  .case-card.bar-animate:nth-child(4) .case-bar { width: 74%; }
+
+  /* CTA */
+  #contact {
+    background: var(--black);
+    text-align: center;
+    padding: 160px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-super {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .cta-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 8vw, 112px);
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+
+  .cta-title span { color: var(--gold); }
+
+  .cta-sub {
+    font-size: 15px;
+    color: rgba(245,242,236,0.45);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 52px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    background: var(--gold);
+    padding: 18px 36px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid rgba(245,242,236,0.15);
+    padding: 18px 36px;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(245,242,236,0.25);
+    font-family: 'Syne', sans-serif;
+    letter-spacing: 1px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .footer-links a {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.4; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .hero { padding: 0 24px 60px; }
+    section { padding: 80px 24px; }
+    .diensten-header { grid-template-columns: 1fr; gap: 32px; }
+    .diensten-grid { grid-template-columns: 1fr; }
+    .resultaten-grid { grid-template-columns: 1fr; }
+    .stats-bar { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+    .cta-buttons { flex-direction: column; align-items: center; }
+  }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>1cultuur Media Groep</h1>
-<p>Het mediahuis dat de brug slaat tussen de straat en de professionele wereld.</p>
-</header>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<section class="section">
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo"><span>1</span>cultuur</a>
+  <ul class="nav-links">
+    <li><a href="#diensten">Diensten</a></li>
+    <li><a href="#resultaten">Resultaten</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Samenwerken</a>
+</nav>
 
-<h2>Onze Impact</h2>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-line"></div>
 
-<div class="stats">
+  <div class="hero-tag">Amsterdam · Nederland · België</div>
 
-<div>
-<div class="stat">7M+</div>
-<p>Views per maand</p>
-</div>
+  <h1 class="hero-headline">
+    De straat<br>
+    <em>spreekt.</em><br>
+    <span class="outline">Jij ook.</span>
+  </h1>
 
-<div>
-<div class="stat">1.8M</div>
-<p>Likes</p>
-</div>
+  <p class="hero-sub">
+    1cultuur slaat de brug tussen straatcultuur en merken die er écht bij willen horen. Geen campagnes — verhalen die blijven hangen.
+  </p>
 
-<div>
-<div class="stat">18-30</div>
-<p>Stedelijke doelgroep</p>
-</div>
-
-</div>
-
-<button>Samenwerken</button>
-
+  <div class="hero-bottom">
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+    <div class="hero-badge">Est. 2024 — NL / BE</div>
+  </div>
 </section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">7M+</div>
+    <div class="stat-label">Views per maand</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.1s">
+    <div class="stat-num">1.8M</div>
+    <div class="stat-label">Likes</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.2s">
+    <div class="stat-num">18–30</div>
+    <div class="stat-label">Stedelijke doelgroep</div>
+  </div>
+  <div class="stat-item reveal" style="transition-delay:0.3s">
+    <div class="stat-num">NL+BE</div>
+    <div class="stat-label">Actieve markten</div>
+  </div>
+</div>
+
+<!-- DIENSTEN -->
+<section id="diensten">
+  <div class="diensten-header">
+    <div>
+      <div class="section-tag reveal">Wat we doen</div>
+      <h2 class="section-title reveal">Formats<br>die raken.</h2>
+    </div>
+    <p class="diensten-intro reveal">
+      Merken die met 1cultuur werken kopen geen advertentieruimte. Ze kopen een plek in de cultuur. Dat verschil is meetbaar.
+    </p>
+  </div>
+
+  <div class="diensten-grid">
+    <div class="dienst-card reveal">
+      <div class="dienst-num">01</div>
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="dienst-name">Branded Storytelling</div>
+      <div class="dienst-desc">Jouw merk wordt onderdeel van een verhaal dat de doelgroep al volgt. Geen onderbreking — een toegevoegde laag aan de content.</div>
+      <div class="dienst-arrow">
+        Meer info
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <div class="dienst-card reveal" style="transition-delay:0.1s">
+      <div class="dienst-num">02</div>
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <div class="dienst-name">Strategische Product Placement</div>
+      <div class="dienst-desc">Je product zit in de context waar de doelgroep het wil zien. Authentiek, onopvallend en effectief — geen post-it marketing.</div>
+      <div class="dienst-arrow">
+        Meer info
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+
+    <div class="dienst-card reveal" style="transition-delay:0.2s">
+      <div class="dienst-num">03</div>
+      <div class="dienst-icon">
+        <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="dienst-name">High-Impact Series</div>
+      <div class="dienst-desc">Terugkerende formats die loyaliteit opbouwen. Jouw merk verschijnt elke aflevering — in een context die groeit, niet krimpt.</div>
+      <div class="dienst-arrow">
+        Meer info
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTATEN -->
+<section id="resultaten">
+  <div class="section-tag reveal">Bewezen impact</div>
+  <h2 class="section-title reveal">Geen claims.<br>Cijfers.</h2>
+
+  <div class="resultaten-grid">
+    <div class="case-card reveal">
+      <div class="case-tag">Branded Storytelling</div>
+      <div class="case-result">2.3M views</div>
+      <p class="case-desc">Eén geïntegreerde video-serie met een sportmerk genereerde meer organisch bereik dan hun eigen kanaal dat kwartaal.</p>
+      <div class="case-bar"></div>
+    </div>
+
+    <div class="case-card reveal" style="transition-delay:0.1s">
+      <div class="case-tag">Product Placement</div>
+      <div class="case-result">+340% CTR</div>
+      <p class="case-desc">Contextplaatsing in streetwear-content presteerde 3,4x beter dan standaard influencer-posts van hetzelfde merk.</p>
+      <div class="case-bar"></div>
+    </div>
+
+    <div class="case-card reveal" style="transition-delay:0.2s">
+      <div class="case-tag">High-Impact Series</div>
+      <div class="case-result">18 afleveringen</div>
+      <p class="case-desc">Format liep 6 maanden, gemiddeld 400K views per aflevering. Sponsormerk groeide mee met het publiek.</p>
+      <div class="case-bar"></div>
+    </div>
+
+    <div class="case-card reveal" style="transition-delay:0.3s">
+      <div class="case-tag">Community</div>
+      <div class="case-result">87% retentie</div>
+      <p class="case-desc">Doelgroep 18–30 in NL/BE. Hoge terugkeer per format — het publiek kiest, niet de algoritmen.</p>
+      <div class="case-bar"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-super reveal">Klaar om te werken?</div>
+  <h2 class="cta-title reveal">
+    Jouw merk.<br>
+    <span>Onze cultuur.</span>
+  </h2>
+  <p class="cta-sub reveal">
+    We werken met een beperkt aantal partners per kwartaal. Stuur een bericht — dan kijken we of er een match is.
+  </p>
+  <div class="cta-buttons reveal">
+    <a href="https://wa.me/31600000000?text=Hey%201cultuur%2C%20ik%20wil%20samenwerken" class="btn-primary" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a href="mailto:contact@1cultuur.nl" class="btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      E-mail sturen
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>1</span>cultuur Media Groep</div>
+  <div class="footer-copy">© 2026 1cultuur. All rights reserved.</div>
+  <ul class="footer-links">
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">TikTok</a></li>
+    <li><a href="#">YouTube</a></li>
+  </ul>
+</footer>
+
+<script>
+  // CUSTOM CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top  = my + 'px';
+  });
+
+  (function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+    requestAnimationFrame(animateRing);
+  })();
+
+  document.querySelectorAll('a, button, .dienst-card, .stat-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(2.5)';
+      ring.style.width = '56px';
+      ring.style.height = '56px';
+      ring.style.opacity = '0.3';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+      ring.style.width = '36px';
+      ring.style.height = '36px';
+      ring.style.opacity = '0.6';
+    });
+  });
+
+  // SCROLL NAV BORDER
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // SCROLL REVEAL + BAR ANIMATION
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.classList.contains('case-card')) {
+          e.target.classList.add('bar-animate');
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.case-card').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
