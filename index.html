@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bereik 7M+ jongeren via 1cultuur Media Groep. Wij vertalen straatcultuur naar strategische merkverhalen die echt blijven hangen.">
-<title>1cultuur Media Groep | De brug tussen straat en merk</title>
+<meta name="description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
+<title>1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling</title>
 <!-- Favicon -->
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="shortcut icon" href="/favicon.ico">
-<meta name="theme-color" content="#080808">
+<meta name="theme-color" content="#161616">
 <!-- Canonical -->
 <link rel="canonical" href="https://1cultuur.nl/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://1cultuur.nl/">
-<meta property="og:title" content="1cultuur Media Groep | De brug tussen straat en merk">
-<meta property="og:description" content="Bereik 7M+ jongeren via 1cultuur Media Groep. Wij vertalen straatcultuur naar strategische merkverhalen die echt blijven hangen.">
+<meta property="og:title" content="1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling">
+<meta property="og:description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
 <meta property="og:image" content="https://1cultuur.nl/logo.png">
 <meta property="og:locale" content="nl_NL">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="1cultuur Media Groep | De brug tussen straat en merk">
-<meta name="twitter:description" content="Bereik 7M+ jongeren via 1cultuur Media Groep. Wij vertalen straatcultuur naar strategische merkverhalen die echt blijven hangen.">
+<meta name="twitter:title" content="1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling">
+<meta name="twitter:description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
 <meta name="twitter:image" content="https://1cultuur.nl/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,16 +33,16 @@
 /* ── RESET ───────────────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'DM Sans',sans-serif;background:#080808;color:#f5f2ec;overflow-x:hidden;min-width:320px}
+body{font-family:'DM Sans',sans-serif;background:#161616;color:#f5f2ec;overflow-x:hidden;min-width:320px}
 img,svg{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 /* ── TOKENS ──────────────────────────────────────────────────── */
 :root{
-  --gold:#c9a84c;--gold-l:#e2c278;
-  --black:#080808;--s1:#111;--s2:#161616;--s3:#1c1c1c;
-  --white:#f5f2ec;--grey:#7a7a7a;
-  --border:rgba(201,168,76,.18);
+  --gold:#FF7A04;--gold-l:#FF9A3E;
+  --black:#161616;--s1:#1c1c1c;--s2:#222;--s3:#2a2a2a;
+  --white:#f5f2ec;--grey:#818181;
+  --border:rgba(245,242,236,.08);
   --px:clamp(20px,5vw,72px);
   --py:clamp(64px,10vw,128px);
 }
@@ -53,7 +53,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   position:fixed;inset:0 0 auto 0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
   padding:20px var(--px);
-  background:rgba(8,8,8,.8);
+  background:rgba(22,22,22,.85);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid transparent;
   transition:border-color .3s;
@@ -96,11 +96,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   padding:calc(80px + 5vw) var(--px) clamp(48px,8vw,88px);
   overflow:hidden;
 }
-.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 75% 45%,rgba(201,168,76,.07) 0%,transparent 65%),radial-gradient(ellipse 45% 55% at 15% 85%,rgba(201,168,76,.04) 0%,transparent 60%)}
+@media(max-width:640px){.hero{min-height:auto;padding-top:calc(90px + 3vw);padding-bottom:clamp(32px,6vw,48px)}}
+.hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 75% 45%,rgba(255,122,4,.04) 0%,transparent 65%),radial-gradient(ellipse 45% 55% at 15% 85%,rgba(255,122,4,.02) 0%,transparent 60%)}
 .hero-accent{position:absolute;top:0;bottom:0;left:var(--px);width:1px;background:linear-gradient(to bottom,transparent 5%,var(--gold) 35%,var(--gold) 65%,transparent 95%);opacity:.18}
 .hero-kicker{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(20px,4vw,32px);opacity:0;animation:fadeUp .7s ease forwards .25s}
 .hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,12vw,148px);line-height:.93;max-width:14ch;opacity:0;animation:fadeUp .9s ease forwards .45s}
-.hero-h1 em{font-style:normal;color:var(--gold)}
+.hero-h1 em{font-style:normal;color:var(--white)}
 .hero-h1 .out{-webkit-text-stroke:1px rgba(245,242,236,.22);color:transparent}
 .hero-sub{margin-top:clamp(20px,4vw,36px);max-width:52ch;font-size:clamp(14px,2vw,17px);line-height:1.7;color:rgba(245,242,236,.5);font-weight:300;opacity:0;animation:fadeUp .9s ease forwards .65s}
 .hero-foot{margin-top:clamp(36px,6vw,64px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;opacity:0;animation:fadeUp .9s ease forwards .85s}
@@ -116,7 +117,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .stat:hover::after{transform:scaleX(1)}
 @media(max-width:720px){.stat:nth-child(2n){border-right:none}.stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--border)}}
 @media(min-width:721px){.stat:last-child{border-right:none}}
-.stat-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,64px);color:var(--gold);line-height:1;letter-spacing:2px}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,64px);color:var(--white);line-height:1;letter-spacing:2px}
 .stat-l{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-top:6px}
 /* ── VIDEO MARQUEE ───────────────────────────────────────────── */
 .marquee-section{padding:var(--py) 0;background:var(--black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
@@ -157,15 +158,15 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 @media(min-width:481px) and (max-width:840px){.cards{grid-template-columns:repeat(2,1fr)}}
 .card{background:var(--s1);padding:clamp(32px,5vw,52px) clamp(24px,4vw,40px);position:relative;overflow:hidden;transition:background .3s;display:flex;flex-direction:column}
 .card:hover{background:var(--s2)}
-.card-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,88px);color:rgba(201,168,76,.07);position:absolute;top:-8px;right:16px;line-height:1;transition:color .3s;user-select:none}
-.card:hover .card-num{color:rgba(201,168,76,.14)}
+.card-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,8vw,88px);color:rgba(255,122,4,.05);position:absolute;top:-8px;right:16px;line-height:1;transition:color .3s;user-select:none}
+.card:hover .card-num{color:rgba(255,122,4,.1)}
 .card-icon{width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:clamp(20px,3vw,28px);transition:border-color .3s,background .3s;flex-shrink:0}
-.card:hover .card-icon{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.card:hover .card-icon{border-color:var(--gold);background:rgba(255,122,4,.08)}
 .card-icon svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .card-name{font-family:'Syne',sans-serif;font-size:clamp(15px,2vw,17px);font-weight:700;margin-bottom:14px}
 .card-desc{font-size:clamp(13px,1.6vw,14px);line-height:1.75;color:var(--grey);font-weight:300;flex:1}
 .card-more{display:inline-flex;align-items:center;gap:8px;margin-top:clamp(20px,3vw,32px);font-family:'Syne',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:10px 16px;transition:border-color .25s,background .25s;align-self:flex-start}
-.card-more:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.card-more:hover{border-color:var(--gold);background:rgba(255,122,4,.08)}
 .card-more svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
 /* ── DIENST DETAIL SECTIONS ──────────────────────────────────── */
 .dienst-detail{padding:var(--py) var(--px);border-top:1px solid var(--border);position:relative;overflow:hidden}
@@ -173,7 +174,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .dienst-detail:nth-child(even){background:var(--black)}
 .detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,100px);align-items:center;max-width:1200px;margin:0 auto}
 @media(max-width:720px){.detail-inner{grid-template-columns:1fr}}
-.detail-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,18vw,220px);color:rgba(201,168,76,.05);position:absolute;right:0;top:50%;transform:translateY(-50%);line-height:1;pointer-events:none;user-select:none}
+.detail-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(100px,18vw,220px);color:rgba(255,122,4,.04);position:absolute;right:0;top:50%;transform:translateY(-50%);line-height:1;pointer-events:none;user-select:none}
 @media(max-width:720px){.detail-num{font-size:clamp(80px,25vw,160px);top:0;transform:none}}
 .detail-kicker{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
 .detail-h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,64px);line-height:1;margin-bottom:clamp(20px,3vw,32px)}
@@ -202,7 +203,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 @media(max-width:720px){.contact-inner{grid-template-columns:1fr}}
 .contact-info{display:flex;flex-direction:column;justify-content:center}
 .contact-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,80px);line-height:.95;margin-bottom:clamp(16px,3vw,28px)}
-.contact-h2 span{color:var(--gold)}
+.contact-h2 span{color:var(--white)}
 .contact-sub{font-size:clamp(14px,1.8vw,16px);color:rgba(245,242,236,.45);font-weight:300;line-height:1.75;margin-bottom:clamp(28px,4vw,40px)}
 .contact-channels{display:flex;flex-direction:column;gap:16px}
 .contact-channel{display:flex;align-items:center;gap:14px;font-family:'Syne',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--grey);transition:color .2s}
@@ -228,7 +229,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 @media(max-width:840px){.footer-top{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.footer-top{grid-template-columns:1fr}}
 .footer-brand .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:16px}
-.footer-brand .foot-logo span{color:var(--gold)}
+.footer-brand .foot-logo span{color:var(--white)}
 .footer-brand p{font-size:13px;line-height:1.7;color:var(--grey);font-weight:300;max-width:30ch}
 .footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
 .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
@@ -246,7 +247,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .nl-msg.show{display:block}
 .footer-socials{display:flex;gap:16px;margin-top:20px}
 .footer-socials a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);transition:border-color .2s,background .2s}
-.footer-socials a:hover{border-color:var(--gold);background:rgba(201,168,76,.08)}
+.footer-socials a:hover{border-color:var(--gold);background:rgba(255,122,4,.08)}
 .footer-socials svg{width:16px;height:16px;fill:var(--grey);transition:fill .2s}
 .footer-socials a:hover svg{fill:var(--gold)}
 .footer-bottom{border-top:1px solid var(--border);padding:20px var(--px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
@@ -269,22 +270,89 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "1cultuur Media Groep",
-  "url": "https://1cultuur.nl",
-  "logo": "https://1cultuur.nl/logo.png",
-  "description": "Het mediahuis dat menselijke verhalen vertaalt naar strategische impact. De brug tussen straat en merk.",
-  "foundingDate": "2024",
-  "areaServed": ["Nederland", "België"],
-  "sameAs": [
-    "https://www.instagram.com/1cultuur",
-    "https://www.tiktok.com/@1cultuur"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "email": "info@1cultuur.nl"
-  }
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://1cultuur.nl/#organization",
+      "name": "1cultuur Media Groep",
+      "alternateName": "1cultuur",
+      "url": "https://1cultuur.nl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://1cultuur.nl/logo.png"
+      },
+      "description": "Onafhankelijk mediahuis gespecialiseerd in branded storytelling, impact marketing en strategische content voor de Benelux. Wij vertalen menselijke verhalen naar strategische merkimpact.",
+      "foundingDate": "2024",
+      "taxID": "91566215",
+      "areaServed": [
+        {"@type": "Country", "name": "Nederland"},
+        {"@type": "Country", "name": "België"}
+      ],
+      "knowsAbout": [
+        "Branded Storytelling",
+        "Impact Marketing",
+        "Strategische Product Placement",
+        "Content Marketing doelgroep 18-30 jaar",
+        "Maatschappelijke thema's in media",
+        "Authenticiteit in marketing"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Branded Storytelling",
+            "description": "Merkintegratie in menselijke verhalen en inhoudelijke producties voor maximale impact."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Strategische Product Placement",
+            "description": "Authentieke productplaatsing in de natuurlijke context van de doelgroep."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "High-Impact Series",
+            "description": "Terugkerende formats die een langdurige band opbouwen tussen merk en community."
+          }
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/1cultuur",
+        "https://www.tiktok.com/@1cultuur",
+        "https://www.facebook.com/share/18KqXgD1yR/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "email": "info@1cultuur.nl",
+        "availableLanguage": ["Dutch"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://1cultuur.nl/#website",
+      "url": "https://1cultuur.nl",
+      "name": "1cultuur Media Groep",
+      "publisher": {"@id": "https://1cultuur.nl/#organization"},
+      "inLanguage": "nl-NL"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://1cultuur.nl/#webpage",
+      "url": "https://1cultuur.nl",
+      "name": "1cultuur Media Groep | Impact Marketing & Branded Storytelling",
+      "isPartOf": {"@id": "https://1cultuur.nl/#website"},
+      "about": {"@id": "https://1cultuur.nl/#organization"},
+      "description": "Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.",
+      "inLanguage": "nl-NL"
+    }
+  ]
 }
 </script>
 </head>
@@ -294,7 +362,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#hero" class="nav-logo" aria-label="1cultuur — naar boven">
-    <img src="logo.png" alt="1cultuur logo">
+    <img src="logo.png" alt="1cultuur Media Groep — Impact Marketing en Branded Storytelling">
   </a>
   <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -331,8 +399,8 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <div class="stat-l">maandelijks bereik</div>
   </div>
   <div class="stat reveal" style="transition-delay:.08s">
-    <div class="stat-n">1.8M</div>
-    <div class="stat-l">likes & reacties</div>
+    <div class="stat-n">100%</div>
+    <div class="stat-l">eigen productie</div>
   </div>
   <div class="stat reveal" style="transition-delay:.16s">
     <div class="stat-n">18–30</div>
@@ -350,9 +418,9 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <!-- Column 1 — scrolls DOWN -->
     <div class="marquee-col">
       <div class="marquee-vtrack marquee-vtrack--down">
-        <div class="m-item"><img src="gif1.gif" alt="Content fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif2.gif" alt="Content fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif3.gif" alt="Content fragment" loading="lazy"></div>
+        <div class="m-item"><img src="gif1.gif" alt="1cultuur branded storytelling productie" loading="lazy"></div>
+        <div class="m-item"><img src="gif2.gif" alt="Impact marketing content voor jongeren" loading="lazy"></div>
+        <div class="m-item"><img src="gif3.gif" alt="Maatschappelijke storytelling Benelux" loading="lazy"></div>
         <!-- duplicate for seamless loop -->
         <div class="m-item"><img src="gif1.gif" alt="" loading="lazy"></div>
         <div class="m-item"><img src="gif2.gif" alt="" loading="lazy"></div>
@@ -362,10 +430,10 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <!-- Column 2 — scrolls UP -->
     <div class="marquee-col">
       <div class="marquee-vtrack marquee-vtrack--up">
-        <div class="m-item"><img src="gif4.gif" alt="Content fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif5.gif" alt="Content fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif6.gif" alt="Content fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif7.gif" alt="Content fragment" loading="lazy"></div>
+        <div class="m-item"><img src="gif4.gif" alt="Strategische product placement in content" loading="lazy"></div>
+        <div class="m-item"><img src="gif5.gif" alt="High-impact series voor merken" loading="lazy"></div>
+        <div class="m-item"><img src="gif6.gif" alt="Authentieke marketing doelgroep 18-30" loading="lazy"></div>
+        <div class="m-item"><img src="gif7.gif" alt="1cultuur media productie behind the scenes" loading="lazy"></div>
         <!-- duplicate for seamless loop -->
         <div class="m-item"><img src="gif4.gif" alt="" loading="lazy"></div>
         <div class="m-item"><img src="gif5.gif" alt="" loading="lazy"></div>
@@ -377,13 +445,13 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   <!-- Mobile: horizontal scroll -->
   <div class="marquee-mobile">
     <div class="marquee-htrack">
-      <div class="mh-item"><img src="gif1.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif2.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif3.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif4.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif5.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif6.gif" alt="Content fragment" loading="lazy"></div>
-      <div class="mh-item"><img src="gif7.gif" alt="Content fragment" loading="lazy"></div>
+      <div class="mh-item"><img src="gif1.gif" alt="1cultuur branded storytelling productie" loading="lazy"></div>
+      <div class="mh-item"><img src="gif2.gif" alt="Impact marketing content voor jongeren" loading="lazy"></div>
+      <div class="mh-item"><img src="gif3.gif" alt="Maatschappelijke storytelling Benelux" loading="lazy"></div>
+      <div class="mh-item"><img src="gif4.gif" alt="Strategische product placement in content" loading="lazy"></div>
+      <div class="mh-item"><img src="gif5.gif" alt="High-impact series voor merken" loading="lazy"></div>
+      <div class="mh-item"><img src="gif6.gif" alt="Authentieke marketing doelgroep 18-30" loading="lazy"></div>
+      <div class="mh-item"><img src="gif7.gif" alt="1cultuur media productie behind the scenes" loading="lazy"></div>
       <!-- duplicate for seamless loop -->
       <div class="mh-item"><img src="gif1.gif" alt="" loading="lazy"></div>
       <div class="mh-item"><img src="gif2.gif" alt="" loading="lazy"></div>
