@@ -92,11 +92,18 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 /* ── HERO ────────────────────────────────────────────────────── */
 .hero{
   position:relative;min-height:100svh;
-  display:flex;flex-direction:column;justify-content:flex-end;
+  display:grid;grid-template-columns:1fr 1.15fr;align-items:center;gap:clamp(32px,5vw,64px);
   padding:calc(80px + 5vw) var(--px) clamp(48px,8vw,88px);
   overflow:hidden;
 }
-@media(max-width:640px){.hero{min-height:auto;padding-top:calc(90px + 3vw);padding-bottom:clamp(32px,6vw,48px)}}
+.hero-content{display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}
+.hero-media{display:flex;gap:16px;height:clamp(500px,70vh,700px);position:relative;z-index:1}
+.hero-content .social-stat{padding:0;margin-top:clamp(28px,4vw,40px);margin-bottom:0}
+@media(max-width:640px){
+  .hero{display:flex;flex-direction:column;justify-content:flex-end;min-height:auto;padding-top:calc(90px + 3vw);padding-bottom:clamp(32px,6vw,48px)}
+  .hero-media{display:none}
+  .hero-content .social-stat{display:none}
+}
 .hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 75% 45%,rgba(255,122,4,.04) 0%,transparent 65%),radial-gradient(ellipse 45% 55% at 15% 85%,rgba(255,122,4,.02) 0%,transparent 60%)}
 .hero-accent{position:absolute;top:0;bottom:0;left:var(--px);width:1px;background:linear-gradient(to bottom,transparent 5%,var(--gold) 35%,var(--gold) 65%,transparent 95%);opacity:.18}
 .hero-kicker{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(20px,4vw,32px);opacity:0;animation:fadeUp .7s ease forwards .25s}
@@ -125,7 +132,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .social-stat a:hover{color:var(--white)}
 .social-stat svg{width:28px;height:28px;flex-shrink:0}
 /* ── VIDEO MARQUEE ───────────────────────────────────────────── */
-.marquee-section{padding:var(--py) 0;background:var(--black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.marquee-section{display:none;padding:var(--py) 0;background:var(--black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .marquee-label{padding:0 var(--px);margin-bottom:clamp(28px,5vw,48px);display:flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
 .marquee-label::after{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0}
 /* Desktop: two vertical columns, opposite scroll */
@@ -139,15 +146,15 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .marquee-vtrack--down{animation:m-down 50s linear infinite}
 @keyframes m-up{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @keyframes m-down{from{transform:translateY(-50%)}to{transform:translateY(0)}}
-.m-item{width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
+.m-item{width:100%;aspect-ratio:4/5;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
 .m-item img{width:100%;height:100%;object-fit:cover;display:block}
 /* Mobile: horizontal scroll */
 .marquee-mobile{display:none;overflow:hidden}
 .marquee-htrack{display:flex;gap:12px;width:max-content;will-change:transform;animation:m-h 35s linear infinite}
 @keyframes m-h{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mh-item{width:clamp(160px,40vw,220px);aspect-ratio:1/1;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
+.mh-item{width:clamp(220px,55vw,300px);aspect-ratio:4/5;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
 .mh-item img{width:100%;height:100%;object-fit:cover;display:block}
-@media(max-width:640px){.marquee-desktop{display:none}.marquee-mobile{display:block}}
+@media(max-width:640px){.marquee-section{display:block}.marquee-desktop{display:none}.marquee-mobile{display:block}}
 /* ── SECTION SHELL ───────────────────────────────────────────── */
 .sec{padding:var(--py) var(--px)}
 .sec-tag{display:flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(28px,5vw,52px)}
@@ -394,10 +401,42 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-accent" aria-hidden="true"></div>
-  <h1 class="hero-h1">Verhalen met<br><em>impact.</em><br><span class="out">Een platform met een missie.</span></h1>
-  <p class="hero-sub">Wij bouwen de brug tussen merken en de generatie van nu. Geen reclame, maar producties die ertoe doen.</p>
-  <div class="hero-cta" style="margin-top:clamp(24px,4vw,36px);opacity:0;animation:fadeUp .9s ease forwards .75s">
-    <a href="#diensten" class="btn btn-gold">Bekijk onze diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  <div class="hero-content">
+    <h1 class="hero-h1">Verhalen met<br><em>impact.</em><br><span class="out">Een platform met een missie.</span></h1>
+    <p class="hero-sub">Wij bouwen de brug tussen merken en de generatie van nu. Geen reclame, maar producties die ertoe doen.</p>
+    <div class="hero-cta" style="margin-top:clamp(24px,4vw,36px);opacity:0;animation:fadeUp .9s ease forwards .75s">
+      <a href="#diensten" class="btn btn-gold">Bekijk onze diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="social-stat" style="opacity:0;animation:fadeUp .9s ease forwards .85s">
+      <a href="https://www.tiktok.com/@1cultuur?_r=1&_t=ZG-94ZUwPyVwfY" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.1a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81-.07 4.86 4.86 0 01-.38-3.94z"/></svg>
+        55.000+ Volgers op TikTok
+      </a>
+    </div>
+  </div>
+  <div class="hero-media">
+    <div class="marquee-col">
+      <div class="marquee-vtrack marquee-vtrack--down">
+        <div class="m-item"><img src="gif1.gif" alt="1cultuur branded storytelling productie" loading="lazy"></div>
+        <div class="m-item"><img src="gif2.gif" alt="Impact marketing content voor jongeren" loading="lazy"></div>
+        <div class="m-item"><img src="gif3.gif" alt="Maatschappelijke storytelling Benelux" loading="lazy"></div>
+        <div class="m-item"><img src="gif1.gif" alt="" loading="lazy"></div>
+        <div class="m-item"><img src="gif2.gif" alt="" loading="lazy"></div>
+        <div class="m-item"><img src="gif3.gif" alt="" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="marquee-col">
+      <div class="marquee-vtrack marquee-vtrack--up">
+        <div class="m-item"><img src="gif4.gif" alt="Strategische product placement in content" loading="lazy"></div>
+        <div class="m-item"><img src="gif5.gif" alt="High-impact series voor merken" loading="lazy"></div>
+        <div class="m-item"><img src="gif6.gif" alt="Authentieke marketing doelgroep 18-30" loading="lazy"></div>
+        <div class="m-item"><img src="gif7.gif" alt="1cultuur media productie behind the scenes" loading="lazy"></div>
+        <div class="m-item"><img src="gif4.gif" alt="" loading="lazy"></div>
+        <div class="m-item"><img src="gif5.gif" alt="" loading="lazy"></div>
+        <div class="m-item"><img src="gif6.gif" alt="" loading="lazy"></div>
+        <div class="m-item"><img src="gif7.gif" alt="" loading="lazy"></div>
+      </div>
+    </div>
   </div>
 </section>
 <!-- STATS -->
@@ -426,35 +465,6 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.1a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81-.07 4.86 4.86 0 01-.38-3.94z"/></svg>
       55.000+ Volgers op TikTok
     </a>
-  </div>
-  <!-- Desktop: two vertical columns, opposite scroll directions -->
-  <div class="marquee-desktop">
-    <!-- Column 1 — scrolls DOWN -->
-    <div class="marquee-col">
-      <div class="marquee-vtrack marquee-vtrack--down">
-        <div class="m-item"><img src="gif1.gif" alt="1cultuur branded storytelling productie" loading="lazy"></div>
-        <div class="m-item"><img src="gif2.gif" alt="Impact marketing content voor jongeren" loading="lazy"></div>
-        <div class="m-item"><img src="gif3.gif" alt="Maatschappelijke storytelling Benelux" loading="lazy"></div>
-        <!-- duplicate for seamless loop -->
-        <div class="m-item"><img src="gif1.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif2.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif3.gif" alt="" loading="lazy"></div>
-      </div>
-    </div>
-    <!-- Column 2 — scrolls UP -->
-    <div class="marquee-col">
-      <div class="marquee-vtrack marquee-vtrack--up">
-        <div class="m-item"><img src="gif4.gif" alt="Strategische product placement in content" loading="lazy"></div>
-        <div class="m-item"><img src="gif5.gif" alt="High-impact series voor merken" loading="lazy"></div>
-        <div class="m-item"><img src="gif6.gif" alt="Authentieke marketing doelgroep 18-30" loading="lazy"></div>
-        <div class="m-item"><img src="gif7.gif" alt="1cultuur media productie behind the scenes" loading="lazy"></div>
-        <!-- duplicate for seamless loop -->
-        <div class="m-item"><img src="gif4.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif5.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif6.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif7.gif" alt="" loading="lazy"></div>
-      </div>
-    </div>
   </div>
   <!-- Mobile: horizontal scroll -->
   <div class="marquee-mobile">
