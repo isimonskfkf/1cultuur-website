@@ -3,28 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
-<title>1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling</title>
+<meta name="description" content="1cultuur biedt een ongefilterde kijk op de thema's die onze maatschappij echt bepalen. Van diepgaande persoonlijke groei tot de rauwe werkelijkheid. Wij vertellen de verhalen die de standaard zetten.">
+<title>1cultuur Media Groep | Het podium voor de verhalen die ertoe doen</title>
 <!-- Favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="shortcut icon" href="/favicon.ico">
 <meta name="theme-color" content="#161616">
 <!-- Canonical -->
 <link rel="canonical" href="https://1cultuur.nl/">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://1cultuur.nl/">
-<meta property="og:title" content="1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling">
-<meta property="og:description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
+<meta property="og:title" content="1cultuur Media Groep | Het podium voor de verhalen die ertoe doen">
+<meta property="og:description" content="1cultuur is het onafhankelijke mediahuis dat de verhalen vertelt die de rest laat liggen. Van persoonlijke groei tot maatschappelijke impact. Ongefilterd en met diepgang.">
 <meta property="og:image" content="https://1cultuur.nl/logo.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="1cultuur Media Groep logo">
+<meta property="og:site_name" content="1cultuur Media Groep">
 <meta property="og:locale" content="nl_NL">
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="1cultuur Media Groep | Impact Marketing &amp; Branded Storytelling">
-<meta name="twitter:description" content="Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1cultuur Media Groep | Het podium voor de verhalen die ertoe doen">
+<meta name="twitter:description" content="1cultuur is het onafhankelijke mediahuis dat de verhalen vertelt die de rest laat liggen. Van persoonlijke groei tot maatschappelijke impact.">
 <meta name="twitter:image" content="https://1cultuur.nl/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,8 +61,9 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   background:rgba(22,22,22,.85);
   backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid transparent;
-  transition:border-color .3s;
+  transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .3s;
 }
+.nav.hidden{transform:translateY(-100%)}
 .nav.solid{border-color:var(--border)}
 .nav-logo{display:flex;align-items:center;flex-shrink:0}
 .nav-logo img{height:44px;width:auto}
@@ -297,16 +303,18 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
+      "@type": ["Organization", "NewsMediaOrganization"],
       "@id": "https://1cultuur.nl/#organization",
       "name": "1cultuur Media Groep",
       "alternateName": "1cultuur",
       "url": "https://1cultuur.nl",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://1cultuur.nl/logo.png"
+        "url": "https://1cultuur.nl/logo.png",
+        "width": 512,
+        "height": 512
       },
-      "description": "Onafhankelijk mediahuis gespecialiseerd in branded storytelling, impact marketing en strategische content voor de Benelux. Wij vertalen menselijke verhalen naar strategische merkimpact.",
+      "description": "Onafhankelijk mediahuis dat ongefilterde verhalen vertelt over persoonlijke groei en maatschappelijke thema's. 1cultuur zet de standaard voor storytelling met diepgang in de Benelux.",
       "foundingDate": "2024",
       "taxID": "91566215",
       "areaServed": [
@@ -314,47 +322,22 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
         {"@type": "Country", "name": "België"}
       ],
       "knowsAbout": [
-        "Branded Storytelling",
-        "Impact Marketing",
-        "Strategische Product Placement",
-        "Content Marketing doelgroep 18-30 jaar",
-        "Maatschappelijke thema's in media",
-        "Authenticiteit in marketing"
+        "Storytelling",
+        "Persoonlijke groei",
+        "Maatschappelijke thema's",
+        "Onafhankelijke media",
+        "Culturele producties Benelux"
       ],
-      "makesOffer": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Branded Storytelling",
-            "description": "Merkintegratie in menselijke verhalen en inhoudelijke producties voor maximale impact."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Strategische Product Placement",
-            "description": "Authentieke productplaatsing in de natuurlijke context van de doelgroep."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "High-Impact Series",
-            "description": "Terugkerende formats die een langdurige band opbouwen tussen merk en community."
-          }
-        }
-      ],
+      "publishingPrinciples": "https://1cultuur.nl/missie",
       "sameAs": [
         "https://www.instagram.com/1cultuur",
         "https://www.tiktok.com/@1cultuur",
-        "https://www.facebook.com/share/18KqXgD1yR/"
+        "https://www.facebook.com/share/18KqXgD1yR/",
+        "https://snapchat.com/t/uUd863Pk"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
-        "contactType": "sales",
+        "contactType": "general",
         "email": "info@1cultuur.nl",
         "availableLanguage": ["Dutch"]
       }
@@ -371,10 +354,10 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
       "@type": "WebPage",
       "@id": "https://1cultuur.nl/#webpage",
       "url": "https://1cultuur.nl",
-      "name": "1cultuur Media Groep | Impact Marketing & Branded Storytelling",
+      "name": "1cultuur Media Groep | Het podium voor de verhalen die ertoe doen",
       "isPartOf": {"@id": "https://1cultuur.nl/#website"},
       "about": {"@id": "https://1cultuur.nl/#organization"},
-      "description": "Bereik maandelijks 7M+ jongeren via 1cultuur Media Groep. Wij vertalen menselijke verhalen naar strategische merkimpact voor professionele partners in de Benelux.",
+      "description": "1cultuur biedt een ongefilterde kijk op de thema's die onze maatschappij echt bepalen. Van diepgaande persoonlijke groei tot de rauwe werkelijkheid. Wij vertellen de verhalen die de standaard zetten.",
       "inLanguage": "nl-NL"
     }
   ]
@@ -395,7 +378,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   <ul class="nav-links">
     <li><a href="#diensten">Diensten</a></li>
     <li><a href="#resultaten">Resultaten</a></li>
-    <li><a href="missie.html">Onze Missie</a></li>
+    <li><a href="/missie">Onze Missie</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-socials">
@@ -406,7 +389,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
       <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
     </a>
     <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
-      <svg viewBox="0 0 24 24"><path d="M12.166.934c.09 0 4.344.277 5.926 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.031.51.076.044.204.09.402.09.3-.016.659-.12 1.033-.301a1.2 1.2 0 01.464-.104c.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-.15.045-.225.075-.262.09-.422.27-.422.27l.003.045c.24.789-.449 1.094-1.394 1.094-.3 0-.6-.044-.9-.119-.648-.164-1.168-.259-1.65-.259-.242 0-.479.03-.719.09a4.028 4.028 0 00-1.08.449c-.45.24-.96.48-1.65.48h-.06c-.69 0-1.2-.24-1.65-.48a4.04 4.04 0 00-1.08-.45c-.24-.06-.48-.09-.72-.09-.48 0-1.004.09-1.65.26-.3.074-.6.119-.899.119-.946 0-1.636-.305-1.395-1.094l.005-.045s-.163-.18-.423-.27c-.075-.03-.15-.045-.225-.075a8.185 8.185 0 01-.345-.12c-.822-.329-1.227-.719-1.212-1.168 0-.36.284-.69.735-.838.15-.061.33-.09.51-.09.12 0 .3.016.464.105.375.18.735.3 1.034.3.199 0 .33-.06.405-.09-.009-.18-.019-.33-.031-.51l-.003-.06c-.104-1.627-.23-3.653.3-4.846C7.394 1.211 10.753.934 11.743.934l.423 0z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
     </a>
   </div>
   <a href="#contact" class="nav-cta">Samenwerken</a>
@@ -415,7 +398,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <div class="mobile-overlay" id="mobileMenu">
   <a href="#diensten">Diensten</a>
   <a href="#resultaten">Resultaten</a>
-  <a href="missie.html">Onze Missie</a>
+  <a href="/missie">Onze Missie</a>
   <a href="#contact">Contact</a>
   <a href="#contact" class="btn btn-gold">Samenwerken</a>
   <div class="mobile-socials">
@@ -426,7 +409,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
       <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
     </a>
     <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
-      <svg viewBox="0 0 24 24"><path d="M12.166.934c.09 0 4.344.277 5.926 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.031.51.076.044.204.09.402.09.3-.016.659-.12 1.033-.301a1.2 1.2 0 01.464-.104c.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-.15.045-.225.075-.262.09-.422.27-.422.27l.003.045c.24.789-.449 1.094-1.394 1.094-.3 0-.6-.044-.9-.119-.648-.164-1.168-.259-1.65-.259-.242 0-.479.03-.719.09a4.028 4.028 0 00-1.08.449c-.45.24-.96.48-1.65.48h-.06c-.69 0-1.2-.24-1.65-.48a4.04 4.04 0 00-1.08-.45c-.24-.06-.48-.09-.72-.09-.48 0-1.004.09-1.65.26-.3.074-.6.119-.899.119-.946 0-1.636-.305-1.395-1.094l.005-.045s-.163-.18-.423-.27c-.075-.03-.15-.045-.225-.075a8.185 8.185 0 01-.345-.12c-.822-.329-1.227-.719-1.212-1.168 0-.36.284-.69.735-.838.15-.061.33-.09.51-.09.12 0 .3.016.464.105.375.18.735.3 1.034.3.199 0 .33-.06.405-.09-.009-.18-.019-.33-.031-.51l-.003-.06c-.104-1.627-.23-3.653.3-4.846C7.394 1.211 10.753.934 11.743.934l.423 0z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
     </a>
     <a href="https://www.facebook.com/share/18KqXgD1yR/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
       <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -488,7 +471,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <div class="stat-l">eigen productie</div>
   </div>
   <div class="stat reveal" style="transition-delay:.16s">
-    <div class="stat-n">18–30</div>
+    <div class="stat-n">18–35</div>
     <div class="stat-l">kernpubliek</div>
   </div>
   <div class="stat reveal" style="transition-delay:.24s">
@@ -692,7 +675,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <footer class="footer">
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="foot-logo"><img src="logo.png" alt="1cultuur" style="height:40px;width:auto;margin-bottom:8px"></div>
+      <div class="foot-logo"><a href="/" aria-label="1cultuur Media Groep - Home"><img src="logo.png" alt="1cultuur Media Groep" style="height:40px;width:auto;margin-bottom:8px"></a></div>
       <p>Het mediahuis dat menselijke verhalen vertaalt naar strategische impact.</p>
       <div class="footer-socials">
         <!-- Instagram -->
@@ -709,7 +692,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
         </a>
         <!-- Snapchat -->
         <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
-          <svg viewBox="0 0 24 24"><path d="M12.166.934c.09 0 4.344.277 5.926 3.821.529 1.193.403 3.219.299 4.847l-.003.06c-.012.18-.022.345-.031.51.076.044.204.09.402.09.3-.016.659-.12 1.033-.301a1.2 1.2 0 01.464-.104c.182 0 .359.029.509.09.45.149.734.479.734.838.015.449-.39.839-1.213 1.168-.089.029-.209.075-.344.119-.45.135-.15.045-.225.075-.262.09-.422.27-.422.27l.003.045c.24.789-.449 1.094-1.394 1.094-.3 0-.6-.044-.9-.119-.648-.164-1.168-.259-1.65-.259-.242 0-.479.03-.719.09a4.028 4.028 0 00-1.08.449c-.45.24-.96.48-1.65.48h-.06c-.69 0-1.2-.24-1.65-.48a4.04 4.04 0 00-1.08-.45c-.24-.06-.48-.09-.72-.09-.48 0-1.004.09-1.65.26-.3.074-.6.119-.899.119-.946 0-1.636-.305-1.395-1.094l.005-.045s-.163-.18-.423-.27c-.075-.03-.15-.045-.225-.075a8.185 8.185 0 01-.345-.12c-.822-.329-1.227-.719-1.212-1.168 0-.36.284-.69.735-.838.15-.061.33-.09.51-.09.12 0 .3.016.464.105.375.18.735.3 1.034.3.199 0 .33-.06.405-.09-.009-.18-.019-.33-.031-.51l-.003-.06c-.104-1.627-.23-3.653.3-4.846C7.394 1.211 10.753.934 11.743.934l.423 0z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
         </a>
       </div>
     </div>
@@ -719,7 +702,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
         <li><a href="#hero">Home</a></li>
         <li><a href="#diensten">Diensten</a></li>
         <li><a href="#resultaten">Resultaten</a></li>
-        <li><a href="missie.html">Onze Missie</a></li>
+        <li><a href="/missie">Onze Missie</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -750,9 +733,16 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <script>
 (function(){
   'use strict';
-  /* NAV BORDER */
+  /* NAV: hide on scroll down, show on scroll up */
   var nav=document.getElementById('nav');
-  window.addEventListener('scroll',function(){nav.classList.toggle('solid',window.scrollY>50)},{passive:true});
+  var lastY=window.scrollY;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY;
+    nav.classList.toggle('solid',y>50);
+    if(y>lastY&&y>80){nav.classList.add('hidden')}
+    else{nav.classList.remove('hidden')}
+    lastY=y;
+  },{passive:true});
   /* HAMBURGER MENU */
   var hamburger=document.getElementById('hamburger');
   var mobileMenu=document.getElementById('mobileMenu');
