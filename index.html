@@ -119,6 +119,11 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 @media(min-width:721px){.stat:last-child{border-right:none}}
 .stat-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,64px);color:var(--white);line-height:1;letter-spacing:2px}
 .stat-l{font-family:'Syne',sans-serif;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--grey);margin-top:6px}
+/* ── SOCIAL STAT ─────────────────────────────────────────────── */
+.social-stat{display:flex;align-items:center;gap:12px;padding:0 var(--px);margin-bottom:clamp(28px,5vw,48px)}
+.social-stat a{display:inline-flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-size:clamp(13px,2vw,15px);font-weight:600;color:var(--grey);letter-spacing:.5px;transition:color .2s}
+.social-stat a:hover{color:var(--white)}
+.social-stat svg{width:28px;height:28px;flex-shrink:0}
 /* ── VIDEO MARQUEE ───────────────────────────────────────────── */
 .marquee-section{padding:var(--py) 0;background:var(--black);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .marquee-label{padding:0 var(--px);margin-bottom:clamp(28px,5vw,48px);display:flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
@@ -390,7 +395,10 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   <div class="hero-glow"></div>
   <div class="hero-accent" aria-hidden="true"></div>
   <h1 class="hero-h1">Verhalen met<br><em>impact.</em><br><span class="out">Een platform met een missie.</span></h1>
-  <p class="hero-sub">Merken willen een connectie maken met de generatie van nu maar ze spreken de taal niet. Daarom bouwt 1cultuur de brug naar de echte leefwereld. Maar wij maken geen reclame. Wij maken producties die mensen echt aan het denken zetten.</p>
+  <p class="hero-sub">Wij bouwen de brug tussen merken en de generatie van nu. Geen reclame, maar producties die ertoe doen.</p>
+  <div class="hero-cta" style="margin-top:clamp(24px,4vw,36px);opacity:0;animation:fadeUp .9s ease forwards .75s">
+    <a href="#diensten" class="btn btn-gold">Bekijk onze diensten <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
 </section>
 <!-- STATS -->
 <section class="stats" id="impact" aria-label="Impact cijfers">
@@ -413,6 +421,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 </section>
 <!-- VIDEO MARQUEE -->
 <section class="marquee-section" aria-label="Content fragmenten">
+  <div class="social-stat reveal">
+    <a href="https://www.tiktok.com/@1cultuur?_r=1&_t=ZG-94ZUwPyVwfY" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48v-7.1a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-.81-.07 4.86 4.86 0 01-.38-3.94z"/></svg>
+      55.000+ Volgers op TikTok
+    </a>
+  </div>
   <!-- Desktop: two vertical columns, opposite scroll directions -->
   <div class="marquee-desktop">
     <!-- Column 1 — scrolls DOWN -->
