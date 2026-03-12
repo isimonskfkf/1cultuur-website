@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Pagina niet gevonden | 1cultuur Media Groep</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<meta name="theme-color" content="#161616">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:#161616;color:#f5f2ec;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;position:relative}
+a{color:inherit;text-decoration:none}
+.noise{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.06;mix-blend-mode:screen}
+.glow{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,122,4,.04) 0%,transparent 70%)}
+.wrap{position:relative;z-index:1;text-align:center;padding:40px 24px;max-width:600px}
+.code{font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,25vw,220px);line-height:.85;letter-spacing:6px;color:rgba(245,242,236,.06);user-select:none}
+.title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,5vw,48px);line-height:1;margin-top:-20px;margin-bottom:20px}
+.sub{font-size:clamp(14px,2vw,16px);color:#818181;font-weight:300;line-height:1.7;max-width:40ch;margin:0 auto 40px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 32px;background:#FF7A04;color:#161616;transition:background .2s,transform .2s;white-space:nowrap}
+.btn:hover{background:#FF9A3E;transform:translateY(-2px)}
+.btn svg{flex-shrink:0}
+.logo{position:absolute;top:28px;left:28px}
+.logo img{height:40px;width:auto}
+@media(max-width:480px){.logo{left:50%;transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+<a href="/" class="logo" aria-label="1cultuur - Home">
+  <img src="/logo.png" alt="1cultuur Media Groep">
+</a>
+<div class="glow"></div>
+<div class="wrap">
+  <div class="code" aria-hidden="true">404</div>
+  <h1 class="title">Deze pagina bestaat niet.</h1>
+  <p class="sub">Het verhaal dat je zoekt is hier niet te vinden. Maar er zijn genoeg andere verhalen die je aandacht verdienen.</p>
+  <a href="/" class="btn">
+    Terug naar home
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+</div>
+<canvas class="noise" id="n" aria-hidden="true"></canvas>
+<script>
+(function(){
+  var c=document.getElementById('n');if(!c)return;
+  var x=c.getContext('2d'),w,h;
+  function r(){w=c.width=window.innerWidth/3;h=c.height=window.innerHeight/3}
+  r();window.addEventListener('resize',r);
+  var img=x.createImageData(w,h);
+  function go(){
+    var d=img.data,i=0,l=d.length;
+    while(i<l){var v=Math.random()*255|0;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;i+=4}
+    if(w!==img.width||h!==img.height)img=x.createImageData(w,h);
+    x.putImageData(img,0,0);
+    setTimeout(function(){requestAnimationFrame(go)},50);
+  }
+  go();
+})();
+</script>
+</body>
+</html>
