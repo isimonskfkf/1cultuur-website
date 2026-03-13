@@ -1,0 +1,16 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Original media (large files - only deploy compressed web versions)
+media/*.MOV
+media/*.MP4
+media/*.JPG
+media/*.PNG
+media/.DS_Store
+
+# Node
+node_modules/
+
+# Claude
+.claude/
