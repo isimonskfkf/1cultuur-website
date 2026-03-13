@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Een betrokken publiek van 18-35 jaar in Nederland en België. Bekijk de cijfers achter het snelstgroeiende mediahuis in de Benelux.">
+<title>Community | 1cultuur Media</title>
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#161616">
+<!-- Canonical -->
+<link rel="canonical" href="https://1cultuur.nl/community">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://1cultuur.nl/community">
+<meta property="og:title" content="Community | 1cultuur Media">
+<meta property="og:description" content="Een betrokken publiek van 18-35 jaar in Nederland en België. Bekijk de cijfers achter het snelstgroeiende mediahuis in de Benelux.">
+<meta property="og:image" content="https://1cultuur.nl/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="1cultuur Media - De nummer 1 in diepgaande verhalen te delen met het grotere publiek">
+<meta property="og:site_name" content="1cultuur Media">
+<meta property="og:locale" content="nl_NL">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Community | 1cultuur Media">
+<meta name="twitter:description" content="Een betrokken publiek van 18-35 jaar in Nederland en België. Bekijk de cijfers achter het snelstgroeiende mediahuis in de Benelux.">
+<meta name="twitter:image" content="https://1cultuur.nl/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ───────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'DM Sans',sans-serif;background:#161616;color:#f5f2ec;overflow-x:hidden;min-width:320px}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
+:root{
+  --gold:#FF7A04;--gold-l:#FF9A3E;
+  --black:#161616;--s1:#1c1c1c;--s2:#222;--s3:#2a2a2a;
+  --white:#f5f2ec;--grey:#818181;
+  --border:rgba(245,242,236,.08);
+  --px:clamp(20px,5vw,72px);
+  --py:clamp(64px,10vw,128px);
+}
+/* ── ANIMATED NOISE OVERLAY ──────────────────────────────────── */
+.noise-canvas{position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.06;mix-blend-mode:screen}
+/* ── NAV ─────────────────────────────────────────────────────── */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:20px var(--px);
+  background:rgba(22,22,22,.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  transition:transform .35s cubic-bezier(.4,0,.2,1),border-color .3s;
+}
+.nav.hidden{transform:translateY(-100%)}
+.nav-logo{display:flex;align-items:center;flex-shrink:0}
+.nav-logo img{height:44px;width:auto}
+.nav-links{display:flex;gap:clamp(18px,3vw,40px);list-style:none}
+.nav-links a{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-cta{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--black);background:var(--gold);padding:10px 20px;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.nav-cta:hover{background:var(--gold-l)}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;padding:8px;cursor:pointer;z-index:260}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-overlay{display:none;position:fixed;inset:0;z-index:290;background:var(--black);flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0;pointer-events:none;transition:opacity .3s;padding-bottom:100px}
+.mobile-overlay.open{opacity:1;pointer-events:auto}
+.mobile-overlay a{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);transition:color .2s}
+.mobile-overlay a:hover{color:var(--gold)}
+.mobile-overlay .btn{font-size:13px;padding:14px 28px;margin-top:12px}
+/* ── NAV SOCIALS ────────────────────────────────────────────── */
+.nav-socials{display:flex;align-items:center;gap:10px;margin-right:8px}
+.nav-socials a{display:flex;align-items:center;justify-content:center;width:28px;height:28px;opacity:.45;transition:opacity .2s}
+.nav-socials a:hover{opacity:1}
+.nav-socials svg{width:15px;height:15px;fill:var(--white)}
+/* ── MOBILE SOCIALS ────────────────────────────────────────── */
+.mobile-socials{display:flex;align-items:center;gap:20px;position:absolute;bottom:clamp(36px,8vw,56px)}
+.mobile-socials a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--border);transition:border-color .2s,background .2s}
+.mobile-socials a:hover{border-color:var(--gold);background:rgba(255,122,4,.08)}
+.mobile-socials svg{width:18px;height:18px;fill:var(--grey);transition:fill .2s}
+.mobile-socials a:hover svg{fill:var(--gold)}
+@media(max-width:640px){.hamburger{display:flex}.nav-cta{display:none}.nav-links{display:none}.nav-socials{display:none}.mobile-overlay{display:flex}}
+/* ── PAGE HERO ──────────────────────────────────────────────── */
+.page-hero{
+  padding:calc(100px + 5vw) var(--px) clamp(48px,8vw,80px);
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.page-hero-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 40%,rgba(255,122,4,.03) 0%,transparent 65%)}
+.page-kicker{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(16px,3vw,24px)}
+.page-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,10vw,120px);line-height:.93}
+.page-h1 em{font-style:normal;color:var(--white)}
+.page-sub{margin-top:clamp(20px,3vw,28px);max-width:56ch;font-size:clamp(14px,2vw,17px);line-height:1.75;color:rgba(245,242,236,.5);font-weight:300}
+/* ── SECTION SHELL ─────────────────────────────────────────── */
+.sec{padding:var(--py) var(--px)}
+.sec-tag{display:flex;align-items:center;gap:12px;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(28px,5vw,52px)}
+.sec-tag::after{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0}
+.sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,80px);line-height:1;margin-bottom:clamp(16px,3vw,28px)}
+.sec-body{font-size:clamp(14px,1.8vw,16px);line-height:1.8;color:rgba(245,242,236,.55);font-weight:300;max-width:64ch}
+/* ── STATS BAR ───────────────────────────────────────────────── */
+.stats{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+@media(max-width:720px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:400px){.stats-grid{grid-template-columns:1fr}}
+.stat{background:var(--black);padding:clamp(32px,5vw,56px) clamp(24px,4vw,40px);text-align:center}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:1;color:var(--gold);margin-bottom:8px}
+.stat-label{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey)}
+/* ── GEO / AUDIENCE TEXT SECTIONS ────────────────────────────── */
+.geo{background:var(--black)}
+.audience{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* ── REACTIONS ────────────────────────────────────────────────── */
+.reactions{background:var(--black)}
+.reactions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:clamp(40px,6vw,64px)}
+@media(max-width:840px){.reactions-grid{grid-template-columns:1fr}}
+.reaction{background:var(--s1);padding:clamp(32px,5vw,48px) clamp(24px,4vw,36px);border-left:3px solid var(--gold);display:flex;flex-direction:column;gap:16px}
+.reaction-text{font-size:clamp(14px,1.8vw,16px);line-height:1.8;color:rgba(245,242,236,.7);font-weight:300;font-style:italic;flex:1}
+.reaction-author{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--grey)}
+/* ── PLATFORM CARDS ──────────────────────────────────────────── */
+.platforms{background:var(--s1);border-top:1px solid var(--border)}
+.platform-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:clamp(40px,6vw,64px)}
+@media(max-width:600px){.platform-grid{grid-template-columns:1fr}}
+.platform-card{background:var(--black);padding:clamp(32px,5vw,56px) clamp(24px,4vw,48px);position:relative;overflow:hidden;transition:background .3s}
+.platform-card:hover{background:var(--s2)}
+.platform-icon{width:38px;height:38px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:clamp(20px,3vw,28px);transition:border-color .3s,background .3s;flex-shrink:0}
+.platform-card:hover .platform-icon{border-color:var(--gold);background:rgba(255,122,4,.08)}
+.platform-icon svg{width:17px;height:17px;fill:var(--grey);transition:fill .3s}
+.platform-card:hover .platform-icon svg{fill:var(--gold)}
+.platform-name{font-family:'Syne',sans-serif;font-size:clamp(15px,2vw,17px);font-weight:700;margin-bottom:8px}
+.platform-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:1;color:var(--gold);margin-bottom:14px}
+.platform-desc{font-size:clamp(13px,1.6vw,14px);line-height:1.75;color:var(--grey);font-weight:300;max-width:38ch}
+.platform-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.platform-card:hover::after{transform:scaleX(1)}
+/* ── CTA BANNER ──────────────────────────────────────────────── */
+.cta-banner{background:var(--black);border-top:1px solid var(--border);text-align:center}
+.cta-banner-inner{max-width:680px;margin:0 auto}
+.cta-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,72px);line-height:1;margin-bottom:clamp(16px,3vw,24px)}
+.cta-h2 span{color:var(--white)}
+.cta-sub{font-size:clamp(14px,1.8vw,16px);line-height:1.75;color:rgba(245,242,236,.45);font-weight:300;margin-bottom:clamp(28px,4vw,40px)}
+/* ── BUTTONS ─────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 32px;transition:background .2s,border-color .2s,color .2s,transform .2s;white-space:nowrap}
+.btn svg{flex-shrink:0}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+/* ── FOOTER ──────────────────────────────────────────────────── */
+.footer{background:var(--s1);border-top:1px solid var(--border)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:clamp(24px,4vw,48px);padding:clamp(48px,8vw,80px) var(--px)}
+@media(max-width:840px){.footer-top{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footer-top{grid-template-columns:1fr}}
+.footer-brand .foot-logo{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;margin-bottom:16px}
+.footer-brand .foot-logo span{color:var(--white)}
+.footer-brand p{font-size:13px;line-height:1.7;color:var(--grey);font-weight:300;max-width:30ch}
+.footer-col h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-col a{font-size:13px;color:var(--grey);font-weight:300;transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-newsletter h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.footer-newsletter p{font-size:13px;color:var(--grey);font-weight:300;line-height:1.6;margin-bottom:16px}
+.nl-form{display:flex;gap:0}
+.nl-form input{flex:1;background:var(--s2);border:1px solid var(--border);border-right:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:12px 16px;outline:none;min-width:0;transition:border-color .2s}
+.nl-form input:focus{border-color:var(--gold)}
+.nl-form input::placeholder{color:var(--grey)}
+.nl-form button{background:var(--gold);color:var(--black);border:none;padding:12px 18px;cursor:pointer;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;white-space:nowrap;transition:background .2s;flex-shrink:0}
+.nl-form button:hover{background:var(--gold-l)}
+.nl-msg{font-size:12px;color:var(--gold);margin-top:8px;display:none;font-family:'Syne',sans-serif}
+.nl-msg.show{display:block}
+.footer-socials{display:flex;gap:16px;margin-top:20px}
+.footer-socials a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);transition:border-color .2s,background .2s}
+.footer-socials a:hover{border-color:var(--gold);background:rgba(255,122,4,.08)}
+.footer-socials svg{width:16px;height:16px;fill:var(--grey);transition:fill .2s;overflow:visible}
+.footer-socials a:hover svg{fill:var(--gold)}
+.footer-bottom{border-top:1px solid var(--border);padding:20px var(--px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-family:'Syne',sans-serif;font-size:11px;color:rgba(245,242,236,.22);letter-spacing:1px}
+/* ── REVEAL ──────────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .75s ease,transform .75s ease}
+.reveal.on{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+/* ── DESKTOP BREATHING ROOM ────────────────────────────────── */
+@media(min-width:1100px){
+  :root{--px:max(72px,calc((100vw - 1100px) / 2))}
+  .page-h1{font-size:clamp(52px,7vw,100px)}
+  .sec-h2{font-size:clamp(40px,4vw,64px)}
+  .cta-banner h2{font-size:clamp(36px,4.5vw,60px)}
+}
+</style>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "NewsMediaOrganization"],
+      "@id": "https://1cultuur.nl/#organization",
+      "name": "1cultuur Media",
+      "url": "https://1cultuur.nl",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://1cultuur.nl/logo.png",
+        "width": 512,
+        "height": 512
+      },
+      "taxID": "91566215",
+      "description": "Onafhankelijk mediahuis dat ongefilterde verhalen vertelt over persoonlijke groei en maatschappelijke thema's."
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://1cultuur.nl/community#webpage",
+      "url": "https://1cultuur.nl/community",
+      "name": "Community | 1cultuur Media",
+      "description": "Een betrokken publiek van 18-35 jaar in Nederland en België. Bekijk de cijfers achter het snelstgroeiende mediahuis in de Benelux.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://1cultuur.nl/#website",
+        "url": "https://1cultuur.nl",
+        "name": "1cultuur Media"
+      },
+      "publisher": {"@id": "https://1cultuur.nl/#organization"},
+      "inLanguage": "nl-NL"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- ANIMATED NOISE -->
+<canvas class="noise-canvas" id="noiseCanvas" aria-hidden="true"></canvas>
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="logo.png" alt="1cultuur Media">
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/formats">Formats</a></li>
+    <li><a href="/impact">Impact</a></li>
+    <li><a href="/community" class="active">Community</a></li>
+    <li><a href="/partners">Partners</a></li>
+    <li><a href="/missie">Missie</a></li>
+  </ul>
+  <div class="nav-socials">
+    <a href="https://www.instagram.com/1cultuur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@1cultuur" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+    <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+      <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
+    </a>
+  </div>
+  <a href="/partners" class="nav-cta">Samenwerken</a>
+</nav>
+<div class="mobile-overlay" id="mobileMenu">
+  <a href="/formats">Formats</a>
+  <a href="/impact">Impact</a>
+  <a href="/community">Community</a>
+  <a href="/partners">Partners</a>
+  <a href="/missie">Missie</a>
+  <a href="/partners" class="btn btn-gold">Samenwerken</a>
+  <div class="mobile-socials">
+    <a href="https://www.instagram.com/1cultuur" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
+    <a href="https://www.tiktok.com/@1cultuur" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+    </a>
+    <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+      <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/share/18KqXgD1yR/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+  </div>
+</div>
+<main>
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-glow"></div>
+  <p class="page-kicker" style="opacity:0;animation:fadeUp .7s ease forwards .2s">Community</p>
+  <h1 class="page-h1" style="opacity:0;animation:fadeUp .9s ease forwards .4s">Het publiek dat<br><em>terugkomt.</em></h1>
+</section>
+
+<!-- AUDIENCE STATS BAR -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat reveal">
+      <div class="stat-num">7M+</div>
+      <div class="stat-label">Maandelijks bereik</div>
+    </div>
+    <div class="stat reveal" style="transition-delay:.1s">
+      <div class="stat-num">55K+</div>
+      <div class="stat-label">Volgers</div>
+    </div>
+    <div class="stat reveal" style="transition-delay:.2s">
+      <div class="stat-num">18-35</div>
+      <div class="stat-label">Kernpubliek</div>
+    </div>
+    <div class="stat reveal" style="transition-delay:.3s">
+      <div class="stat-num">50/50</div>
+      <div class="stat-label">Man/vrouw</div>
+    </div>
+  </div>
+</section>
+
+<!-- GEOGRAPHIC REACH -->
+<section class="sec geo">
+  <div class="sec-tag reveal">Bereik</div>
+  <h2 class="sec-h2 reveal">Nederland en Belgi&euml;.</h2>
+  <p class="sec-body reveal">De kern van het publiek bevindt zich in de grote steden van Nederland en Vlaanderen. Amsterdam, Rotterdam, Den Haag, Utrecht, Antwerpen, Brussel. Stedelijke jongvolwassenen die dagelijks content consumeren op hun telefoon en bewust kiezen wat hun aandacht krijgt. Het bereik groeit organisch, zonder betaalde promotie, gedreven door herkenbaarheid en deelbaarheid.</p>
+</section>
+
+<!-- AUDIENCE STORY -->
+<section class="sec audience">
+  <div class="sec-tag reveal">Publiek</div>
+  <h2 class="sec-h2 reveal">Wie kijkt er mee.</h2>
+  <p class="sec-body reveal">18 tot 35 jaar. Eerste generatie, tweede generatie, derde generatie. Studenten, starters, jonge professionals. Mensen die opgroeiden tussen twee culturen en daar kracht uit halen. Ze herkennen zich niet in het traditionele medialandschap en zoeken naar verhalen die hun werkelijkheid weerspiegelen. Authenticiteit is geen buzzword voor dit publiek. Het is de minimale eis. Ze delen content die voelt als waarheid, niet als marketing. En ze komen terug als de kwaliteit consistent is.</p>
+</section>
+
+<!-- COMMUNITY REACTIONS -->
+<section class="sec reactions">
+  <div class="sec-tag reveal">Reacties</div>
+  <h2 class="sec-h2 reveal">Wat het publiek zegt.</h2>
+  <div class="reactions-grid">
+    <blockquote class="reaction reveal">
+      <p class="reaction-text">"Eindelijk een platform dat niet over ons praat, maar vanuit ons vertelt. Dit is hoe media er in 2026 uit hoort te zien."</p>
+      <cite class="reaction-author">Kijker, Amsterdam</cite>
+    </blockquote>
+    <blockquote class="reaction reveal" style="transition-delay:.1s">
+      <p class="reaction-text">"Ik stuur elke aflevering door naar mijn vrienden. Het voelt niet als content, het voelt als herkenning."</p>
+      <cite class="reaction-author">Kijker, Rotterdam</cite>
+    </blockquote>
+    <blockquote class="reaction reveal" style="transition-delay:.2s">
+      <p class="reaction-text">"De interviews gaan dieper dan alles wat ik op YouTube of televisie zie. Rauw, eerlijk, en zonder filter."</p>
+      <cite class="reaction-author">Kijker, Antwerpen</cite>
+    </blockquote>
+  </div>
+</section>
+
+<!-- PLATFORM OVERVIEW -->
+<section class="sec platforms">
+  <div class="sec-tag reveal">Platformen</div>
+  <h2 class="sec-h2 reveal">Waar het publiek is.</h2>
+  <div class="platform-grid">
+    <div class="platform-card reveal">
+      <div class="platform-icon">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      </div>
+      <h3 class="platform-name">TikTok</h3>
+      <div class="platform-big">40K+</div>
+      <p class="platform-desc">Volgers. Gemiddeld 8% engagement rate per video. Organische groei door storytelling in kort formaat.</p>
+    </div>
+    <div class="platform-card reveal" style="transition-delay:.1s">
+      <div class="platform-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </div>
+      <h3 class="platform-name">Instagram</h3>
+      <div class="platform-big">15K+</div>
+      <p class="platform-desc">Volgers. Reels en carrousels als verlengstuk van de langere formats. Hoge save-rate op educatieve content.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="sec cta-banner">
+  <div class="cta-banner-inner">
+    <h2 class="cta-h2 reveal">Dit publiek<br><span>bereiken?</span></h2>
+    <p class="cta-sub reveal">Beperkt aantal partnerplekken per kwartaal. Selectie op basis van relevantie en visie.</p>
+    <a href="/partners" class="btn btn-gold reveal" style="transition-delay:.1s">
+      Word partner
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="foot-logo"><a href="/" aria-label="1cultuur Media - Home"><img src="logo.png" alt="1cultuur Media" style="height:40px;width:auto;margin-bottom:8px"></a></div>
+      <p>Verhalen verbinden mensen altijd. Waar diepgang de norm is en de rauwe werkelijkheid centraal staat.</p>
+      <div class="footer-socials">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/1cultuur?igsh=MXRjcTV3enN2aDFjdg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@1cultuur?_r=1&_t=ZG-94ZUwPyVwfY" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/18KqXgD1yR/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <!-- Snapchat -->
+        <a href="https://snapchat.com/t/uUd863Pk" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+          <svg viewBox="0 0 24 24"><path d="M21.798 16.987c-2.867-.472-4.151-3.401-4.204-3.526l-.006-.011a1.07 1.07 0 01-.102-.898c.192-.454.83-.656 1.251-.79.106-.033.205-.065.283-.096.763-.3.918-.613.914-.822a.662.662 0 00-.5-.543l-.007-.002a.946.946 0 00-.356-.069.755.755 0 00-.313.063 2.54 2.54 0 01-.955.266.821.821 0 01-.53-.178l.032-.53.004-.065a10.102 10.102 0 00-.24-4.035 5.248 5.248 0 00-4.874-3.14l-.402.005a5.24 5.24 0 00-4.864 3.137 10.09 10.09 0 00-.242 4.031q.02.299.036.598a.848.848 0 01-.584.178 2.453 2.453 0 01-1.014-.268.575.575 0 00-.245-.049.834.834 0 00-.81.533c-.082.43.532.743.906.89.08.032.178.063.283.096.422.134 1.06.336 1.252.79a1.072 1.072 0 01-.102.898l-.006.011a7.028 7.028 0 01-1.069 1.663 5.215 5.215 0 01-3.134 1.863.24.24 0 00-.2.25.38.38 0 00.03.13c.177.411 1.059.75 2.553.981.14.022.198.25.28.622.032.15.066.305.113.465a.293.293 0 00.32.228 2.485 2.485 0 00.424-.06 5.53 5.53 0 011.12-.127 4.954 4.954 0 01.809.068 3.877 3.877 0 011.535.784 4.443 4.443 0 002.69 1.06c.033 0 .067-.001.1-.004.04.002.095.004.151.004a4.448 4.448 0 002.692-1.06 3.873 3.873 0 011.533-.784 4.973 4.973 0 01.808-.068 5.593 5.593 0 011.12.119 2.391 2.391 0 00.425.053h.024a.279.279 0 00.295-.22 6.52 6.52 0 00.114-.462c.081-.371.14-.598.28-.62 1.494-.23 2.377-.57 2.551-.978a.385.385 0 00.032-.13.24.24 0 00-.2-.25z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/formats">Formats</a></li>
+        <li><a href="/impact">Impact</a></li>
+        <li><a href="/community">Community</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/missie">Missie</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Formats</h4>
+      <ul>
+        <li><a href="/formats#interviews">Interviews</a></li>
+        <li><a href="/formats#statements">Statements</a></li>
+      </ul>
+    </div>
+    <div class="footer-newsletter">
+      <h4>Nieuwsbrief</h4>
+      <p>Blijf op de hoogte van nieuwe formats, samenwerkingen en behind-the-scenes content.</p>
+      <form class="nl-form" id="nlForm" action="https://formspree.io/f/xpqypvey" method="POST">
+        <input type="email" name="newsletter_email" placeholder="je@email.nl" required>
+        <input type="hidden" name="_subject" value="Nieuwe nieuwsbrief aanmelding via 1cultuur.nl">
+        <input type="hidden" name="type" value="newsletter">
+        <button type="submit">Aanmelden</button>
+      </form>
+      <div class="nl-msg" id="nlMsg">Aangemeld! Je hoort van ons.</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 1cultuur Media. All rights reserved.</p>
+  </div>
+</footer>
+<script>
+(function(){
+  'use strict';
+  /* NAV: hide on scroll down, show on scroll up */
+  var nav=document.querySelector('.nav');
+  var lastY=window.scrollY;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY;
+    if(y>lastY&&y>80){nav.classList.add('hidden')}
+    else{nav.classList.remove('hidden')}
+    lastY=y;
+  },{passive:true});
+  /* HAMBURGER MENU */
+  var hamburger=document.getElementById('hamburger');
+  var mobileMenu=document.getElementById('mobileMenu');
+  hamburger.addEventListener('click',function(){
+    var isOpen=hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded',isOpen);
+    hamburger.setAttribute('aria-label',isOpen?'Menu sluiten':'Menu openen');
+    document.body.style.overflow=isOpen?'hidden':'';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded','false');
+      hamburger.setAttribute('aria-label','Menu openen');
+      document.body.style.overflow='';
+    });
+  });
+  /* SCROLL REVEAL */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  /* NEWSLETTER FORM */
+  var nlForm=document.getElementById('nlForm');
+  if(nlForm){
+    nlForm.addEventListener('submit',function(e){
+      e.preventDefault();
+      var data=new FormData(nlForm);
+      fetch(nlForm.action,{method:'POST',body:data,headers:{'Accept':'application/json'}}).then(function(r){
+        if(r.ok){nlForm.style.display='none';document.getElementById('nlMsg').classList.add('show')}
+      });
+    });
+  }
+  /* SMOOTH SCROLL for anchor links */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=this.getAttribute('href').slice(1);
+      if(!id) return;
+      var target=document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+  /* ANIMATED NOISE */
+  (function(){
+    var c=document.getElementById('noiseCanvas');
+    if(!c) return;
+    var ctx=c.getContext('2d');
+    var w,h,frame=0;
+    function resize(){w=c.width=window.innerWidth/3;h=c.height=window.innerHeight/3}
+    resize();
+    window.addEventListener('resize',resize);
+    var img=ctx.createImageData(w,h);
+    function noise(){
+      var d=img.data,len=d.length,i=0;
+      while(i<len){var v=Math.random()*255|0;d[i]=d[i+1]=d[i+2]=v;d[i+3]=255;i+=4}
+      if(w!==img.width||h!==img.height) img=ctx.createImageData(w,h);
+      ctx.putImageData(img,0,0);
+      frame++;
+      if(frame%2===0) requestAnimationFrame(noise); else setTimeout(function(){requestAnimationFrame(noise)},50);
+    }
+    noise();
+  })();
+})();
+</script>
+</body>
+</html>
