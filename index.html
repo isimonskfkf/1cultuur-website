@@ -176,10 +176,9 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 @media(max-width:720px){.latest-grid{grid-template-columns:1fr}}
 .latest-col-label{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .latest-col-label::after{content:'';flex:1;height:1px;background:var(--border)}
-.latest-embed{overflow:hidden;min-height:200px}
-.latest-embed blockquote{margin:0!important}
-.latest-embed .tiktok-embed{max-width:100%!important}
-.latest-embed .instagram-media{max-width:100%!important;min-width:0!important;width:100%!important}
+.latest-media{aspect-ratio:4/5;overflow:hidden;background:var(--s2);border:1px solid var(--border)}
+.latest-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.latest-media:hover img{transform:scale(1.03)}
 .latest-footer{margin-top:clamp(16px,3vw,24px)}
 .latest-link{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);transition:gap .2s}
 .latest-link:hover{gap:12px}
@@ -248,6 +247,16 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 /* ── KEYFRAMES ───────────────────────────────────────────────── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+/* ── DESKTOP BREATHING ROOM ────────────────────────────────── */
+@media(min-width:1100px){
+  :root{--px:max(72px,calc((100vw - 1100px) / 2))}
+  .hero-h1{font-size:clamp(72px,7vw,110px)}
+  .sec-h2{font-size:clamp(40px,4vw,64px)}
+  .bereik-text h2{font-size:clamp(32px,3.5vw,48px)}
+  .cta-banner h2{font-size:clamp(36px,4.5vw,60px)}
+  .impact-metric-big{font-size:clamp(48px,5vw,72px)}
+  .stat-n{font-size:clamp(40px,3.5vw,52px)}
+}
 </style>
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -462,10 +471,8 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   <div class="latest-grid">
     <div class="latest-col reveal">
       <div class="latest-col-label">Interview</div>
-      <div class="latest-embed">
-        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@1cultuur/video/7615291971480948000" data-video-id="7615291971480948000" style="max-width:605px;min-width:250px;">
-          <section><a target="_blank" href="https://www.tiktok.com/@1cultuur">@1cultuur</a></section>
-        </blockquote>
+      <div class="latest-media">
+        <img src="gif1.gif" alt="Interview fragment" loading="lazy">
       </div>
       <div class="latest-footer">
         <a href="/formats#interviews" class="latest-link">Alle interviews <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -473,8 +480,8 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     </div>
     <div class="latest-col reveal" style="transition-delay:.12s">
       <div class="latest-col-label">Statement</div>
-      <div class="latest-embed">
-        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVyy1LZAAev/" data-instgrm-version="14" style="max-width:540px;min-width:250px;width:100%;"></blockquote>
+      <div class="latest-media">
+        <img src="gif5.gif" alt="Statement in het stadsbeeld" loading="lazy">
       </div>
       <div class="latest-footer">
         <a href="/formats#statements" class="latest-link">Alle statements <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -658,7 +665,5 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   })();
 })();
 </script>
-<script async src="https://www.tiktok.com/embed.js"></script>
-<script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
