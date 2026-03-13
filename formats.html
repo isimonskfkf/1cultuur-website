@@ -113,7 +113,14 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 /* ── FORMAT INTRO ─────────────────────────────────────────── */
 .format-intro{max-width:64ch;margin-bottom:clamp(40px,6vw,64px)}
 .format-intro p{font-size:clamp(14px,1.8vw,16px);line-height:1.85;color:rgba(245,242,236,.55);font-weight:300;margin-bottom:clamp(12px,2vw,20px)}
-/* ── (embed-grid verwijderd — vervangen door gif-grid) ──── */
+/* ── MEDIA FEATURED (single video embed) ────────────────── */
+.media-featured{max-width:400px;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px}
+.media-featured iframe{width:100%;height:750px;border:none;display:block}
+/* ── INSTAGRAM GRID ────────────────────────────────────────── */
+.ig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.5vw,16px)}
+@media(max-width:640px){.ig-grid{grid-template-columns:1fr}}
+.ig-item{aspect-ratio:4/5;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px;position:relative}
+.ig-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
 /* ── GIF GALLERY (for interview GIFs) ──────────────────────── */
 .gif-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.5vw,16px);margin-top:clamp(40px,6vw,64px)}
 @media(max-width:400px){.gif-grid{grid-template-columns:1fr}}
@@ -290,7 +297,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Ongefilterde gesprekken. Wij brengen de mens achter de strijd in beeld. Geen gepolijste praatjes, maar de ongezouten waarheid in short-form video.</p>
   </div>
 
-  <!-- Interview fragmenten -->
+  <!-- TikTok video embed -->
+  <div class="media-featured reveal">
+    <iframe src="https://www.tiktok.com/embed/v2/7615291971480948000" allowfullscreen allow="encrypted-media" loading="lazy"></iframe>
+  </div>
+
+  <!-- Meer fragmenten -->
   <div class="gif-grid reveal" style="margin-top:clamp(48px,8vw,80px)">
     <div class="gif-item"><img src="gif1.gif" alt="Interview fragment" loading="lazy"></div>
     <div class="gif-item"><img src="gif2.gif" alt="Interview fragment" loading="lazy"></div>
@@ -311,12 +323,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Visuele wijsheid in het stadsbeeld. De stem van de straat vertaald naar krachtige beelden op billboards. De stad als podium voor reflectie.</p>
   </div>
 
-  <!-- Statement beelden -->
-  <div class="gif-grid reveal">
-    <div class="gif-item"><img src="gif5.gif" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="gif-item"><img src="gif6.gif" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="gif-item"><img src="gif7.gif" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="gif-item"><img src="gif4.gif" alt="Statement in het stadsbeeld" loading="lazy"></div>
+  <!-- Instagram posts -->
+  <div class="ig-grid reveal">
+    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVyy1LZAAev/embed/" allowfullscreen loading="lazy"></iframe></div>
+    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVwOFhAjVlb/embed/" allowfullscreen loading="lazy"></iframe></div>
+    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVtpScDjF1i/embed/" allowfullscreen loading="lazy"></iframe></div>
+    <div class="ig-item"><iframe src="https://www.instagram.com/p/DViYSaWAXKV/embed/" allowfullscreen loading="lazy"></iframe></div>
   </div>
 </section>
 
