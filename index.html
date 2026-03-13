@@ -172,17 +172,16 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,80px);line-height:1}
 /* ── LATEST ─────────────────────────────────────────────────── */
 .latest{background:var(--black)}
-.latest-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:clamp(40px,6vw,64px)}
+.latest-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:clamp(40px,6vw,64px);align-items:start}
 @media(max-width:720px){.latest-grid{grid-template-columns:1fr}}
-.latest-block{background:var(--s1);border:1px solid var(--border);overflow:hidden;transition:background .3s}
-.latest-block:hover{background:var(--s2)}
-.latest-media{aspect-ratio:16/10;overflow:hidden;position:relative}
-.latest-media img{width:100%;height:100%;object-fit:cover;display:block}
-.latest-media-label{position:absolute;top:16px;left:16px;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;background:rgba(22,22,22,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--gold);padding:6px 12px}
-.latest-body{padding:clamp(24px,4vw,36px)}
-.latest-title{font-family:'Syne',sans-serif;font-size:clamp(16px,2.5vw,20px);font-weight:700;margin-bottom:10px;line-height:1.35}
-.latest-desc{font-size:clamp(13px,1.6vw,14px);line-height:1.75;color:var(--grey);font-weight:300}
-.latest-link{display:inline-flex;align-items:center;gap:8px;margin-top:clamp(16px,3vw,24px);font-family:'Syne',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);transition:gap .2s}
+.latest-col-label{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.latest-col-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.latest-embed{overflow:hidden;min-height:200px}
+.latest-embed blockquote{margin:0!important}
+.latest-embed .tiktok-embed{max-width:100%!important}
+.latest-embed .instagram-media{max-width:100%!important;min-width:0!important;width:100%!important}
+.latest-footer{margin-top:clamp(16px,3vw,24px)}
+.latest-link{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);transition:gap .2s}
 .latest-link:hover{gap:12px}
 .latest-link svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
 /* ── IMPACT HIGHLIGHT ───────────────────────────────────────── */
@@ -461,28 +460,26 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   <div class="sec-tag reveal">Recent</div>
   <h2 class="sec-h2 reveal">De nieuwste<br>producties.</h2>
   <div class="latest-grid">
-    <a href="/formats#interviews" class="latest-block reveal">
-      <div class="latest-media">
-        <img src="gif1.gif" alt="Recent interview" loading="lazy">
-        <div class="latest-media-label">Interview</div>
+    <div class="latest-col reveal">
+      <div class="latest-col-label">Interview</div>
+      <div class="latest-embed">
+        <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@1cultuur/video/7615291971480948000" data-video-id="7615291971480948000" style="max-width:605px;min-width:250px;">
+          <section><a target="_blank" href="https://www.tiktok.com/@1cultuur">@1cultuur</a></section>
+        </blockquote>
       </div>
-      <div class="latest-body">
-        <h3 class="latest-title">Het onvertelde verhaal achter het succes</h3>
-        <p class="latest-desc">Een ongefilterd gesprek over de werkelijkheid achter de schermen. De mens achter het succes, of de strijd.</p>
-        <span class="latest-link">Bekijk <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      <div class="latest-footer">
+        <a href="/formats#interviews" class="latest-link">Alle interviews <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </a>
-    <a href="/formats#statements" class="latest-block reveal" style="transition-delay:.12s">
-      <div class="latest-media">
-        <img src="gif5.gif" alt="Recent statement" loading="lazy">
-        <div class="latest-media-label">Statement</div>
+    </div>
+    <div class="latest-col reveal" style="transition-delay:.12s">
+      <div class="latest-col-label">Statement</div>
+      <div class="latest-embed">
+        <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DVyy1LZAAev/" data-instgrm-version="14" style="max-width:540px;min-width:250px;width:100%;"></blockquote>
       </div>
-      <div class="latest-body">
-        <h3 class="latest-title">De stem van de straat</h3>
-        <p class="latest-desc">Visuele wijsheden in het stadsbeeld. Billboards, verkeersborden, architectuur. De boodschap waar je niet omheen kunt.</p>
-        <span class="latest-link">Bekijk <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      <div class="latest-footer">
+        <a href="/formats#statements" class="latest-link">Alle statements <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </a>
+    </div>
   </div>
 </section>
 <!-- IMPACT HIGHLIGHT -->
@@ -661,5 +658,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   })();
 })();
 </script>
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
 </body>
 </html>
