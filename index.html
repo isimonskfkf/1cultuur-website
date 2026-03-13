@@ -177,9 +177,8 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .latest-col-label{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .latest-col-label::after{content:'';flex:1;height:1px;background:var(--border)}
 .latest-media{aspect-ratio:4/5;overflow:hidden;background:var(--black);border:1px solid var(--border);position:relative}
-.latest-media iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.latest-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.latest-media:hover img{transform:scale(1.03)}
+.latest-media video,.latest-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.latest-media:hover video,.latest-media:hover img{transform:scale(1.03)}
 .latest-footer{margin-top:clamp(16px,3vw,24px)}
 .latest-link{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);transition:gap .2s}
 .latest-link:hover{gap:12px}
@@ -473,7 +472,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <div class="latest-col reveal">
       <div class="latest-col-label">Interview</div>
       <div class="latest-media">
-        <iframe src="https://www.tiktok.com/embed/v2/7615291971480948000" allowfullscreen allow="encrypted-media" loading="lazy"></iframe>
+        <video src="media/tiktok-interview.mp4" playsinline muted loop autoplay loading="lazy"></video>
       </div>
       <div class="latest-footer">
         <a href="/formats#interviews" class="latest-link">Alle interviews <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -482,7 +481,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <div class="latest-col reveal" style="transition-delay:.12s">
       <div class="latest-col-label">Statement</div>
       <div class="latest-media">
-        <iframe src="https://www.instagram.com/p/DVyy1LZAAev/embed/" allowfullscreen allow="encrypted-media" loading="lazy"></iframe>
+        <img src="media/ig-statement-1.jpg" alt="Statement in het stadsbeeld" loading="lazy">
       </div>
       <div class="latest-footer">
         <a href="/formats#statements" class="latest-link">Alle statements <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>

@@ -113,14 +113,15 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 /* ── FORMAT INTRO ─────────────────────────────────────────── */
 .format-intro{max-width:64ch;margin-bottom:clamp(40px,6vw,64px)}
 .format-intro p{font-size:clamp(14px,1.8vw,16px);line-height:1.85;color:rgba(245,242,236,.55);font-weight:300;margin-bottom:clamp(12px,2vw,20px)}
-/* ── MEDIA FEATURED (single video embed) ────────────────── */
-.media-featured{max-width:400px;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px}
-.media-featured iframe{width:100%;height:750px;border:none;display:block}
-/* ── INSTAGRAM GRID ────────────────────────────────────────── */
+/* ── MEDIA FEATURED (single video) ──────────────────────── */
+.media-featured{max-width:400px;aspect-ratio:9/16;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px}
+.media-featured video{width:100%;height:100%;object-fit:cover;display:block}
+/* ── STATEMENT GRID ────────────────────────────────────────── */
 .ig-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.5vw,16px)}
 @media(max-width:640px){.ig-grid{grid-template-columns:1fr}}
-.ig-item{aspect-ratio:4/5;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px;position:relative}
-.ig-item iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.ig-item{aspect-ratio:1/1;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px;position:relative}
+.ig-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.ig-item:hover img{transform:scale(1.04)}
 /* ── GIF GALLERY (for interview GIFs) ──────────────────────── */
 .gif-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.5vw,16px);margin-top:clamp(40px,6vw,64px)}
 @media(max-width:400px){.gif-grid{grid-template-columns:1fr}}
@@ -297,9 +298,9 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Ongefilterde gesprekken. Wij brengen de mens achter de strijd in beeld. Geen gepolijste praatjes, maar de ongezouten waarheid in short-form video.</p>
   </div>
 
-  <!-- TikTok video embed -->
+  <!-- Interview video -->
   <div class="media-featured reveal">
-    <iframe src="https://www.tiktok.com/embed/v2/7615291971480948000" allowfullscreen allow="encrypted-media" loading="lazy"></iframe>
+    <video src="media/tiktok-interview.mp4" playsinline muted loop autoplay loading="lazy"></video>
   </div>
 
   <!-- Meer fragmenten -->
@@ -323,12 +324,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Visuele wijsheid in het stadsbeeld. De stem van de straat vertaald naar krachtige beelden op billboards. De stad als podium voor reflectie.</p>
   </div>
 
-  <!-- Instagram posts -->
+  <!-- Statements in het stadsbeeld -->
   <div class="ig-grid reveal">
-    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVyy1LZAAev/embed/" allowfullscreen loading="lazy"></iframe></div>
-    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVwOFhAjVlb/embed/" allowfullscreen loading="lazy"></iframe></div>
-    <div class="ig-item"><iframe src="https://www.instagram.com/p/DVtpScDjF1i/embed/" allowfullscreen loading="lazy"></iframe></div>
-    <div class="ig-item"><iframe src="https://www.instagram.com/p/DViYSaWAXKV/embed/" allowfullscreen loading="lazy"></iframe></div>
+    <div class="ig-item"><img src="media/ig-statement-1.jpg" alt="Statement billboard" loading="lazy"></div>
+    <div class="ig-item"><img src="media/ig-statement-2.jpg" alt="Statement billboard" loading="lazy"></div>
+    <div class="ig-item"><img src="media/ig-statement-3.jpg" alt="Statement billboard" loading="lazy"></div>
+    <div class="ig-item"><img src="media/ig-statement-4.jpg" alt="Statement billboard" loading="lazy"></div>
   </div>
 </section>
 
