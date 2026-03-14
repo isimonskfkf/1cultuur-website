@@ -473,7 +473,7 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <div class="latest-col reveal">
       <div class="latest-col-label">Interview</div>
       <a href="/formats#interviews" class="latest-media">
-        <video src="media/web/interview-1.mp4" playsinline muted loop autoplay></video>
+        <img src="media/web/thumb-1.jpg" alt="Interview: Je wilt eruit maar je komt er op dat moment niet uit" loading="lazy">
       </a>
       <div class="latest-footer">
         <a href="/formats#interviews" class="latest-link">Alle interviews <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -622,18 +622,6 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-
-  /* Auto-play/pause video when visible */
-  var latestVid=document.querySelector('.latest-media video');
-  if(latestVid){
-    var vidIo=new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting) e.target.play().catch(function(){});
-        else e.target.pause();
-      });
-    },{threshold:0.3});
-    vidIo.observe(latestVid);
-  }
 
   /* NEWSLETTER FORM */
   var nlForm=document.getElementById('nlForm');

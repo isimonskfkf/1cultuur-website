@@ -114,81 +114,46 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .format-intro{max-width:56ch;margin-bottom:clamp(32px,5vw,48px)}
 .format-intro p{font-size:clamp(14px,1.8vw,16px);line-height:1.85;color:rgba(245,242,236,.55);font-weight:300}
 
-/* ── INTERVIEW GRID ──────────────────────────────────────── */
-.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,16px)}
-.iv-item{
-  aspect-ratio:9/16;overflow:hidden;background:var(--black);
-  border:1px solid var(--border);border-radius:8px;
-  position:relative;cursor:pointer;
-  transition:border-color .4s,box-shadow .4s;
-}
-.iv-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.iv-item:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06)}
-.iv-item:hover video{transform:scale(1.03)}
-/* Gradient overlay (always subtle, stronger on hover) */
-.iv-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.6) 0%,transparent 40%);pointer-events:none;opacity:.4;transition:opacity .4s}
-.iv-item:hover::after{opacity:.8}
-/* Play button */
-.iv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(22,22,22,.55);border:2px solid rgba(245,242,236,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s;z-index:2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.iv-play svg{width:18px;height:18px;fill:var(--white);margin-left:2px}
-.iv-item:hover .iv-play{background:rgba(255,122,4,.7);border-color:var(--gold);transform:translate(-50%,-50%) scale(1.1)}
-.iv-item.active .iv-play svg{fill:var(--white)}
-/* When playing: show pause icon area, hide play */
-.iv-item.active .iv-play{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.7)}
-/* Sound button (only visible on active/playing video) */
-.iv-sound{position:absolute;bottom:12px;right:12px;width:34px;height:34px;background:rgba(22,22,22,.6);border:1px solid rgba(245,242,236,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;pointer-events:none;transition:all .3s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
-.iv-sound svg{width:14px;height:14px;fill:var(--white)}
-.iv-sound:hover{background:rgba(255,122,4,.6);border-color:var(--gold)}
-.iv-item.active .iv-sound{opacity:1;pointer-events:auto}
-.iv-sound .s-on{display:none}
-.iv-sound .s-off{display:block}
-.iv-sound.unmuted .s-on{display:block}
-.iv-sound.unmuted .s-off{display:none}
-/* Progress */
-.iv-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0;z-index:5;opacity:0;transition:opacity .3s}
-.iv-item.active .iv-bar{opacity:1}
-@media(max-width:768px){.interview-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.interview-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}}
-
-/* ── STATEMENT BENTO ─────────────────────────────────────── */
-.st-bento{display:grid;gap:clamp(8px,1.5vw,14px)}
-/* Desktop: creative asymmetric layout */
-.st-bento{
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:280px 200px 280px;
-}
-.st-i{
-  overflow:hidden;background:var(--black);
-  border:1px solid var(--border);border-radius:8px;
-  position:relative;
+/* ── EPISODE CARDS ──────────────────────────────────────── */
+.ep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px)}
+.ep-card{
+  background:var(--s1);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;display:block;
   transition:border-color .4s,box-shadow .4s,transform .4s;
 }
-.st-i img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.st-i::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.5) 0%,transparent 45%);pointer-events:none;opacity:0;transition:opacity .4s}
-.st-i:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06);transform:translateY(-3px)}
-.st-i:hover img{transform:scale(1.04)}
-.st-i:hover::after{opacity:1}
-/* Bento placements */
-.st-i:nth-child(1){grid-column:1/3;grid-row:1/2}
-.st-i:nth-child(2){grid-column:3/5;grid-row:1/2}
-.st-i:nth-child(3){grid-column:1/2;grid-row:2/3}
-.st-i:nth-child(4){grid-column:2/4;grid-row:2/3}
-.st-i:nth-child(5){grid-column:4/5;grid-row:2/3}
-.st-i:nth-child(6){grid-column:1/5;grid-row:3/4}
-@media(max-width:768px){
-  .st-bento{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
-  .st-i:nth-child(1){grid-column:1/3;grid-row:1/2}
-  .st-i:nth-child(2){grid-column:1/2;grid-row:2/3}
-  .st-i:nth-child(3){grid-column:2/3;grid-row:2/3}
-  .st-i:nth-child(4){grid-column:1/2;grid-row:3/4}
-  .st-i:nth-child(5){grid-column:2/3;grid-row:3/4}
-  .st-i:nth-child(6){grid-column:1/3;grid-row:4/5}
-}
-@media(max-width:480px){
-  .st-bento{grid-template-columns:1fr;grid-template-rows:repeat(6,200px)}
-  .st-i:nth-child(1),.st-i:nth-child(2),.st-i:nth-child(3),
-  .st-i:nth-child(4),.st-i:nth-child(5),.st-i:nth-child(6){grid-column:auto;grid-row:auto}
-}
+.ep-card:hover{border-color:rgba(255,122,4,.15);box-shadow:0 12px 48px rgba(255,122,4,.06);transform:translateY(-4px)}
+.ep-thumb{aspect-ratio:9/16;overflow:hidden;position:relative}
+.ep-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.ep-card:hover .ep-thumb img{transform:scale(1.04)}
+.ep-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.7) 0%,transparent 50%);pointer-events:none}
+.ep-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(22,22,22,.5);border:2px solid rgba(245,242,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:all .35s}
+.ep-play svg{width:20px;height:20px;fill:var(--white);margin-left:2px}
+.ep-card:hover .ep-play{background:rgba(255,122,4,.7);border-color:var(--gold);transform:translate(-50%,-50%) scale(1.1)}
+.ep-body{padding:clamp(16px,2vw,24px)}
+.ep-label{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ep-quote{font-family:'Bebas Neue',sans-serif;font-size:clamp(18px,2.5vw,24px);line-height:1.15;color:var(--white);margin-bottom:16px}
+.ep-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);transition:color .2s,gap .2s}
+.ep-card:hover .ep-cta{color:var(--gold-l);gap:12px}
+.ep-cta svg{width:16px;height:16px;flex-shrink:0;transition:transform .2s}
+.ep-card:hover .ep-cta svg{transform:translateX(2px)}
+@media(max-width:640px){.ep-grid{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto}}
+
+/* ── STATEMENT EDITORIAL ────────────────────────────────── */
+.st-edit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:center}
+.st-featured{aspect-ratio:4/5;overflow:hidden;border-radius:12px;border:1px solid var(--border);position:relative;transition:border-color .4s,box-shadow .4s}
+.st-featured img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.st-featured:hover{border-color:rgba(255,122,4,.15);box-shadow:0 12px 48px rgba(255,122,4,.06)}
+.st-featured:hover img{transform:scale(1.03)}
+.st-text h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,48px);line-height:1.05;margin-bottom:clamp(16px,2vw,24px)}
+.st-text p{font-size:clamp(14px,1.8vw,16px);line-height:1.85;color:rgba(245,242,236,.5);font-weight:300;margin-bottom:clamp(24px,3vw,32px);max-width:44ch}
+.st-previews{display:flex;gap:12px;margin-bottom:clamp(24px,3vw,32px)}
+.st-mini{width:80px;height:80px;overflow:hidden;border-radius:8px;border:1px solid var(--border);flex-shrink:0;transition:border-color .3s}
+.st-mini img{width:100%;height:100%;object-fit:cover;display:block}
+.st-mini:hover{border-color:rgba(255,122,4,.2)}
+.st-link{display:inline-flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:14px 28px;border:1px solid rgba(255,122,4,.3);transition:background .2s,border-color .2s}
+.st-link:hover{background:rgba(255,122,4,.08);border-color:var(--gold)}
+.st-link svg{width:16px;height:16px;flex-shrink:0}
+@media(max-width:768px){.st-edit{grid-template-columns:1fr}.st-featured{max-width:400px;margin:0 auto}}
 
 /* ── DIVIDER ──────────────────────────────────────────────── */
 .sec-divider{height:1px;background:var(--border);margin:0}
@@ -358,44 +323,41 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Ongefilterde gesprekken. De mens achter de strijd in beeld. Geen gepolijste praatjes, maar de ongezouten waarheid in short-form video.</p>
   </div>
 
-  <!-- Interview grid: 3 kolommen, 1 video tegelijk -->
-  <div class="interview-grid">
-    <div class="iv-item reveal" data-iv>
-      <video src="media/web/interview-1.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
-    <div class="iv-item reveal" style="transition-delay:.08s" data-iv>
-      <video src="media/web/interview-2.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
-    <div class="iv-item reveal" style="transition-delay:.16s" data-iv>
-      <video src="media/web/interview-3.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
-    <div class="iv-item reveal" style="transition-delay:.24s" data-iv>
-      <video src="media/web/interview-4.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
-    <div class="iv-item reveal" style="transition-delay:.32s" data-iv>
-      <video src="media/web/interview-5.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
-    <div class="iv-item reveal" style="transition-delay:.40s" data-iv>
-      <video src="media/web/interview-6.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
-      <div class="iv-bar"></div>
-    </div>
+  <!-- Episode cards: thumbnails → TikTok -->
+  <div class="ep-grid">
+    <a href="https://vm.tiktok.com/ZGdua2QTh/" target="_blank" rel="noopener noreferrer" class="ep-card reveal">
+      <div class="ep-thumb">
+        <img src="media/web/thumb-1.jpg" alt="Interview: Je wilt eruit maar je komt er op dat moment niet uit" loading="lazy">
+        <div class="ep-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      </div>
+      <div class="ep-body">
+        <div class="ep-label">Interview</div>
+        <p class="ep-quote">"Je wilt eruit maar je komt er op dat moment niet uit."</p>
+        <span class="ep-cta">Bekijk op TikTok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="https://vm.tiktok.com/ZGduaF5LF/" target="_blank" rel="noopener noreferrer" class="ep-card reveal" style="transition-delay:.1s">
+      <div class="ep-thumb">
+        <img src="media/web/thumb-2.jpg" alt="Interview: Soms is het beter om stil te zijn en niks te zeggen" loading="lazy">
+        <div class="ep-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      </div>
+      <div class="ep-body">
+        <div class="ep-label">Interview</div>
+        <p class="ep-quote">"Soms is het beter om stil te zijn en niks te zeggen."</p>
+        <span class="ep-cta">Bekijk op TikTok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
+    <a href="https://vm.tiktok.com/ZGdua6mYq/" target="_blank" rel="noopener noreferrer" class="ep-card reveal" style="transition-delay:.2s">
+      <div class="ep-thumb">
+        <img src="media/web/thumb-3.jpg" alt="Interview: De pijn gaat nooit weg maar je moet toch doorgaan" loading="lazy">
+        <div class="ep-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      </div>
+      <div class="ep-body">
+        <div class="ep-label">Interview</div>
+        <p class="ep-quote">"De pijn gaat nooit weg maar je moet toch doorgaan."</p>
+        <span class="ep-cta">Bekijk op TikTok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -407,18 +369,23 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 <section class="sec" id="statements" style="background:var(--s1)">
   <div class="sec-tag reveal">Format 02</div>
   <h2 class="sec-h2 reveal">Statements</h2>
-  <div class="format-intro reveal">
-    <p>Visuele wijsheid in het stadsbeeld. De stem van de straat vertaald naar krachtige beelden op billboards. De stad als podium voor reflectie.</p>
-  </div>
-
-  <!-- Bento grid -->
-  <div class="st-bento reveal">
-    <div class="st-i"><img src="media/web/statement-1.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-i"><img src="media/web/statement-2.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-i"><img src="media/web/statement-3.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-i"><img src="media/web/statement-4.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-i"><img src="media/web/statement-5.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-i"><img src="media/web/statement-6.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+  <!-- Editorial layout: featured image + text -->
+  <div class="st-edit">
+    <div class="st-featured reveal">
+      <img src="media/web/statement-1.jpg" alt="Statement: Niet elke dichte deur zit op slot" loading="lazy">
+    </div>
+    <div class="st-text reveal" style="transition-delay:.15s">
+      <h3>De stem van<br>de straat.</h3>
+      <p>Visuele wijsheden in het stadsbeeld. Geen campagnes, geen commercie. Onze statements verschijnen op billboards, borden en muren in de stad. De straat als podium voor reflectie.</p>
+      <div class="st-previews">
+        <div class="st-mini"><img src="media/web/statement-2.jpg" alt="Statement voorbeeld" loading="lazy"></div>
+        <div class="st-mini"><img src="media/web/statement-3.jpg" alt="Statement voorbeeld" loading="lazy"></div>
+      </div>
+      <a href="https://www.instagram.com/1cultuur" target="_blank" rel="noopener noreferrer" class="st-link">
+        Bekijk op Instagram
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -532,93 +499,6 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-
-  /* ── INTERVIEW VIDEO PLAYER ────────────────────────────── */
-  /* Rule: only 1 video plays at a time, only 1 has sound */
-  var items=document.querySelectorAll('.iv-item[data-iv]');
-  var activeItem=null;
-
-  function stopAll(except){
-    items.forEach(function(item){
-      if(item===except) return;
-      var v=item.querySelector('video');
-      var sb=item.querySelector('.iv-sound');
-      if(v){v.pause();v.muted=true;v.currentTime=0}
-      item.classList.remove('active');
-      if(sb) sb.classList.remove('unmuted');
-    });
-  }
-
-  items.forEach(function(item){
-    var vid=item.querySelector('video');
-    var playBtn=item.querySelector('.iv-play');
-    var soundBtn=item.querySelector('.iv-sound');
-    var bar=item.querySelector('.iv-bar');
-    if(!vid) return;
-
-    /* Click item → play/pause (single active) */
-    item.addEventListener('click',function(e){
-      if(e.target.closest('.iv-sound')) return;
-      if(item.classList.contains('active')){
-        /* Currently playing → pause */
-        vid.pause();
-        item.classList.remove('active');
-        activeItem=null;
-      } else {
-        /* Not playing → stop others, play this */
-        stopAll(item);
-        vid.play().catch(function(){});
-        item.classList.add('active');
-        activeItem=item;
-      }
-    });
-
-    /* Sound toggle (exclusive) */
-    if(soundBtn){
-      soundBtn.addEventListener('click',function(e){
-        e.stopPropagation();
-        /* Mute all others first */
-        items.forEach(function(other){
-          if(other===item) return;
-          var ov=other.querySelector('video');
-          var os=other.querySelector('.iv-sound');
-          if(ov) ov.muted=true;
-          if(os) os.classList.remove('unmuted');
-        });
-        vid.muted=!vid.muted;
-        soundBtn.classList.toggle('unmuted',!vid.muted);
-      });
-    }
-
-    /* Progress bar */
-    if(bar){
-      vid.addEventListener('timeupdate',function(){
-        if(vid.duration){
-          bar.style.width=(vid.currentTime/vid.duration*100)+'%';
-        }
-      });
-    }
-
-    /* Sync active class with actual video state */
-    vid.addEventListener('pause',function(){item.classList.remove('active');if(activeItem===item) activeItem=null});
-    vid.addEventListener('play',function(){item.classList.add('active');activeItem=item});
-  });
-
-  /* Intersection observer: pause videos scrolled out of view */
-  var ivIo=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting){
-        var item=e.target;
-        var v=item.querySelector('video');
-        var sb=item.querySelector('.iv-sound');
-        if(v){v.pause();v.muted=true}
-        item.classList.remove('active');
-        if(sb) sb.classList.remove('unmuted');
-        if(activeItem===item) activeItem=null;
-      }
-    });
-  },{threshold:0.15});
-  items.forEach(function(item){ivIo.observe(item)});
 
   /* NEWSLETTER */
   var nlForm=document.getElementById('nlForm');
