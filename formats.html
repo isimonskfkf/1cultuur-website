@@ -114,94 +114,80 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
 .format-intro{max-width:56ch;margin-bottom:clamp(32px,5vw,48px)}
 .format-intro p{font-size:clamp(14px,1.8vw,16px);line-height:1.85;color:rgba(245,242,236,.55);font-weight:300}
 
-/* ── VIDEO WRAPPER (shared) ──────────────────────────────── */
-.vid-wrap{position:relative;overflow:hidden;background:var(--black);border:1px solid var(--border);border-radius:8px;cursor:pointer}
-.vid-wrap video{width:100%;height:100%;object-fit:cover;display:block}
-/* Play button overlay */
-.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(22,22,22,.6);border:2px solid rgba(245,242,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s;pointer-events:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.vid-play svg{width:20px;height:20px;fill:var(--white);margin-left:3px}
-.vid-wrap:hover .vid-play{background:rgba(255,122,4,.7);border-color:var(--gold);transform:translate(-50%,-50%) scale(1.08)}
-.vid-wrap.playing .vid-play{opacity:0;transform:translate(-50%,-50%) scale(.8)}
-/* Sound toggle */
-.vid-sound{position:absolute;bottom:12px;right:12px;width:36px;height:36px;background:rgba(22,22,22,.6);border:1px solid rgba(245,242,236,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:all .3s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.vid-sound svg{width:16px;height:16px;fill:var(--white)}
-.vid-sound:hover{background:rgba(255,122,4,.5);border-color:var(--gold)}
-.vid-sound .icon-on{display:none}
-.vid-sound .icon-off{display:block}
-.vid-sound.unmuted .icon-on{display:block}
-.vid-sound.unmuted .icon-off{display:none}
-/* Progress bar */
-.vid-progress{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0;transition:none;z-index:10}
-
-/* ── FEATURED VIDEO (hero-style) ─────────────────────────── */
-.interview-hero{
-  aspect-ratio:9/16;
-  max-height:75vh;
-  margin:0 auto;
-  max-width:420px;
-  transition:box-shadow .4s,border-color .4s;
-}
-.interview-hero:hover{border-color:rgba(255,122,4,.2);box-shadow:0 12px 60px rgba(255,122,4,.08)}
-.interview-hero .vid-play{width:72px;height:72px}
-.interview-hero .vid-play svg{width:26px;height:26px}
-
-/* ── INTERVIEW REEL (horizontal scroll) ──────────────────── */
-.interview-reel{
-  display:flex;gap:clamp(12px,2vw,16px);
-  overflow-x:auto;overflow-y:hidden;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-  padding:clamp(24px,4vw,40px) 0 16px;
-  scrollbar-width:none;
-}
-.interview-reel::-webkit-scrollbar{display:none}
-.interview-reel .vid-wrap{
-  flex:0 0 clamp(200px,40vw,260px);
-  aspect-ratio:9/16;
-  scroll-snap-align:start;
-  transition:border-color .4s,box-shadow .4s;
-}
-.interview-reel .vid-wrap:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06)}
-.interview-reel .vid-wrap:hover video{transform:scale(1.03)}
-.interview-reel .vid-wrap video{transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.interview-reel .vid-play{width:44px;height:44px}
-.interview-reel .vid-play svg{width:16px;height:16px}
-
-/* ── STATEMENT BENTO GRID ────────────────────────────────── */
-.statement-bento{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-auto-rows:minmax(120px,auto);
-  gap:clamp(8px,1.5vw,16px);
-}
-.st-item{
-  overflow:hidden;background:var(--black);
+/* ── INTERVIEW GRID ──────────────────────────────────────── */
+.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,16px)}
+.iv-item{
+  aspect-ratio:9/16;overflow:hidden;background:var(--black);
   border:1px solid var(--border);border-radius:8px;
   position:relative;cursor:pointer;
+  transition:border-color .4s,box-shadow .4s;
+}
+.iv-item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.iv-item:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06)}
+.iv-item:hover video{transform:scale(1.03)}
+/* Gradient overlay (always subtle, stronger on hover) */
+.iv-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.6) 0%,transparent 40%);pointer-events:none;opacity:.4;transition:opacity .4s}
+.iv-item:hover::after{opacity:.8}
+/* Play button */
+.iv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:52px;height:52px;background:rgba(22,22,22,.55);border:2px solid rgba(245,242,236,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .35s;z-index:2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.iv-play svg{width:18px;height:18px;fill:var(--white);margin-left:2px}
+.iv-item:hover .iv-play{background:rgba(255,122,4,.7);border-color:var(--gold);transform:translate(-50%,-50%) scale(1.1)}
+.iv-item.active .iv-play svg{fill:var(--white)}
+/* When playing: show pause icon area, hide play */
+.iv-item.active .iv-play{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.7)}
+/* Sound button (only visible on active/playing video) */
+.iv-sound{position:absolute;bottom:12px;right:12px;width:34px;height:34px;background:rgba(22,22,22,.6);border:1px solid rgba(245,242,236,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5;opacity:0;pointer-events:none;transition:all .3s;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.iv-sound svg{width:14px;height:14px;fill:var(--white)}
+.iv-sound:hover{background:rgba(255,122,4,.6);border-color:var(--gold)}
+.iv-item.active .iv-sound{opacity:1;pointer-events:auto}
+.iv-sound .s-on{display:none}
+.iv-sound .s-off{display:block}
+.iv-sound.unmuted .s-on{display:block}
+.iv-sound.unmuted .s-off{display:none}
+/* Progress */
+.iv-bar{position:absolute;bottom:0;left:0;height:3px;background:var(--gold);width:0;z-index:5;opacity:0;transition:opacity .3s}
+.iv-item.active .iv-bar{opacity:1}
+@media(max-width:768px){.interview-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.interview-grid{grid-template-columns:1fr;max-width:360px;margin-left:auto;margin-right:auto}}
+
+/* ── STATEMENT BENTO ─────────────────────────────────────── */
+.st-bento{display:grid;gap:clamp(8px,1.5vw,14px)}
+/* Desktop: creative asymmetric layout */
+.st-bento{
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:280px 200px 280px;
+}
+.st-i{
+  overflow:hidden;background:var(--black);
+  border:1px solid var(--border);border-radius:8px;
+  position:relative;
   transition:border-color .4s,box-shadow .4s,transform .4s;
 }
-.st-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
-.st-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.5) 0%,transparent 50%);pointer-events:none;opacity:0;transition:opacity .4s}
-.st-item:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06);transform:translateY(-4px)}
-.st-item:hover img{transform:scale(1.05)}
-.st-item:hover::after{opacity:1}
-/* Bento positioning */
-.st-1{grid-column:1/8;grid-row:1/4}
-.st-2{grid-column:8/13;grid-row:1/3}
-.st-3{grid-column:8/13;grid-row:3/4}
-.st-4{grid-column:1/5;grid-row:4/6}
-.st-5{grid-column:5/9;grid-row:4/6}
-.st-6{grid-column:9/13;grid-row:4/6}
+.st-i img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.st-i::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.5) 0%,transparent 45%);pointer-events:none;opacity:0;transition:opacity .4s}
+.st-i:hover{border-color:rgba(255,122,4,.2);box-shadow:0 8px 40px rgba(255,122,4,.06);transform:translateY(-3px)}
+.st-i:hover img{transform:scale(1.04)}
+.st-i:hover::after{opacity:1}
+/* Bento placements */
+.st-i:nth-child(1){grid-column:1/3;grid-row:1/2}
+.st-i:nth-child(2){grid-column:3/5;grid-row:1/2}
+.st-i:nth-child(3){grid-column:1/2;grid-row:2/3}
+.st-i:nth-child(4){grid-column:2/4;grid-row:2/3}
+.st-i:nth-child(5){grid-column:4/5;grid-row:2/3}
+.st-i:nth-child(6){grid-column:1/5;grid-row:3/4}
 @media(max-width:768px){
-  .statement-bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto}
-  .st-1,.st-2,.st-3,.st-4,.st-5,.st-6{grid-column:auto;grid-row:auto}
-  .st-1{grid-column:1/3}
-  .st-item{aspect-ratio:4/5}
-  .st-1{aspect-ratio:16/10}
+  .st-bento{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px)}
+  .st-i:nth-child(1){grid-column:1/3;grid-row:1/2}
+  .st-i:nth-child(2){grid-column:1/2;grid-row:2/3}
+  .st-i:nth-child(3){grid-column:2/3;grid-row:2/3}
+  .st-i:nth-child(4){grid-column:1/2;grid-row:3/4}
+  .st-i:nth-child(5){grid-column:2/3;grid-row:3/4}
+  .st-i:nth-child(6){grid-column:1/3;grid-row:4/5}
 }
 @media(max-width:480px){
-  .statement-bento{grid-template-columns:1fr}
-  .st-1{grid-column:auto;aspect-ratio:4/5}
+  .st-bento{grid-template-columns:1fr;grid-template-rows:repeat(6,200px)}
+  .st-i:nth-child(1),.st-i:nth-child(2),.st-i:nth-child(3),
+  .st-i:nth-child(4),.st-i:nth-child(5),.st-i:nth-child(6){grid-column:auto;grid-row:auto}
 }
 
 /* ── DIVIDER ──────────────────────────────────────────────── */
@@ -261,7 +247,6 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   .sec-h2{font-size:clamp(40px,4vw,64px)}
   .cta-banner-h2{font-size:clamp(36px,4.5vw,60px)}
   .coming-soon-h3{font-size:clamp(32px,3.5vw,48px)}
-  .interview-hero{max-height:70vh;max-width:380px}
 }
 </style>
 <!-- Structured Data -->
@@ -373,63 +358,43 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
     <p>Ongefilterde gesprekken. De mens achter de strijd in beeld. Geen gepolijste praatjes, maar de ongezouten waarheid in short-form video.</p>
   </div>
 
-  <!-- Featured interview (hero-style) -->
-  <div class="vid-wrap interview-hero reveal" data-vid>
-    <video src="media/web/interview-1.mp4" playsinline muted loop preload="metadata"></video>
-    <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-    <button class="vid-sound" aria-label="Geluid aan/uit">
-      <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-    </button>
-    <div class="vid-progress"></div>
-  </div>
-
-  <!-- Scrollable reel of remaining interviews -->
-  <div class="interview-reel reveal">
-    <div class="vid-wrap" data-vid>
+  <!-- Interview grid: 3 kolommen, 1 video tegelijk -->
+  <div class="interview-grid">
+    <div class="iv-item reveal" data-iv>
+      <video src="media/web/interview-1.mp4" playsinline muted loop preload="metadata"></video>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
+    </div>
+    <div class="iv-item reveal" style="transition-delay:.08s" data-iv>
       <video src="media/web/interview-2.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="vid-sound" aria-label="Geluid aan/uit">
-        <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
-      <div class="vid-progress"></div>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
     </div>
-    <div class="vid-wrap" data-vid>
+    <div class="iv-item reveal" style="transition-delay:.16s" data-iv>
       <video src="media/web/interview-3.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="vid-sound" aria-label="Geluid aan/uit">
-        <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
-      <div class="vid-progress"></div>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
     </div>
-    <div class="vid-wrap" data-vid>
+    <div class="iv-item reveal" style="transition-delay:.24s" data-iv>
       <video src="media/web/interview-4.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="vid-sound" aria-label="Geluid aan/uit">
-        <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
-      <div class="vid-progress"></div>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
     </div>
-    <div class="vid-wrap" data-vid>
+    <div class="iv-item reveal" style="transition-delay:.32s" data-iv>
       <video src="media/web/interview-5.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="vid-sound" aria-label="Geluid aan/uit">
-        <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
-      <div class="vid-progress"></div>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
     </div>
-    <div class="vid-wrap" data-vid>
+    <div class="iv-item reveal" style="transition-delay:.40s" data-iv>
       <video src="media/web/interview-6.mp4" playsinline muted loop preload="metadata"></video>
-      <div class="vid-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
-      <button class="vid-sound" aria-label="Geluid aan/uit">
-        <svg class="icon-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        <svg class="icon-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-      </button>
-      <div class="vid-progress"></div>
+      <div class="iv-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+      <button class="iv-sound" aria-label="Geluid aan/uit"><svg class="s-off" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg><svg class="s-on" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+      <div class="iv-bar"></div>
     </div>
   </div>
 </section>
@@ -447,13 +412,13 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   </div>
 
   <!-- Bento grid -->
-  <div class="statement-bento reveal">
-    <div class="st-item st-1"><img src="media/web/statement-1.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-item st-2"><img src="media/web/statement-2.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-item st-3"><img src="media/web/statement-3.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-item st-4"><img src="media/web/statement-4.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-item st-5"><img src="media/web/statement-5.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
-    <div class="st-item st-6"><img src="media/web/statement-6.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+  <div class="st-bento reveal">
+    <div class="st-i"><img src="media/web/statement-1.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+    <div class="st-i"><img src="media/web/statement-2.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+    <div class="st-i"><img src="media/web/statement-3.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+    <div class="st-i"><img src="media/web/statement-4.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+    <div class="st-i"><img src="media/web/statement-5.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
+    <div class="st-i"><img src="media/web/statement-6.jpg" alt="Statement in het stadsbeeld" loading="lazy"></div>
   </div>
 </section>
 
@@ -568,65 +533,92 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
 
-  /* ── VIDEO PLAYER SYSTEM ────────────────────────────────── */
-  document.querySelectorAll('[data-vid]').forEach(function(wrap){
-    var vid=wrap.querySelector('video');
-    var playBtn=wrap.querySelector('.vid-play');
-    var soundBtn=wrap.querySelector('.vid-sound');
-    var progress=wrap.querySelector('.vid-progress');
+  /* ── INTERVIEW VIDEO PLAYER ────────────────────────────── */
+  /* Rule: only 1 video plays at a time, only 1 has sound */
+  var items=document.querySelectorAll('.iv-item[data-iv]');
+  var activeItem=null;
+
+  function stopAll(except){
+    items.forEach(function(item){
+      if(item===except) return;
+      var v=item.querySelector('video');
+      var sb=item.querySelector('.iv-sound');
+      if(v){v.pause();v.muted=true;v.currentTime=0}
+      item.classList.remove('active');
+      if(sb) sb.classList.remove('unmuted');
+    });
+  }
+
+  items.forEach(function(item){
+    var vid=item.querySelector('video');
+    var playBtn=item.querySelector('.iv-play');
+    var soundBtn=item.querySelector('.iv-sound');
+    var bar=item.querySelector('.iv-bar');
     if(!vid) return;
 
-    /* Click to play/pause */
-    wrap.addEventListener('click',function(e){
-      if(e.target.closest('.vid-sound')) return;
-      if(vid.paused){
-        vid.play().catch(function(){});
-        wrap.classList.add('playing');
-      } else {
+    /* Click item → play/pause (single active) */
+    item.addEventListener('click',function(e){
+      if(e.target.closest('.iv-sound')) return;
+      if(item.classList.contains('active')){
+        /* Currently playing → pause */
         vid.pause();
-        wrap.classList.remove('playing');
+        item.classList.remove('active');
+        activeItem=null;
+      } else {
+        /* Not playing → stop others, play this */
+        stopAll(item);
+        vid.play().catch(function(){});
+        item.classList.add('active');
+        activeItem=item;
       }
     });
 
-    /* Sound toggle */
+    /* Sound toggle (exclusive) */
     if(soundBtn){
       soundBtn.addEventListener('click',function(e){
         e.stopPropagation();
+        /* Mute all others first */
+        items.forEach(function(other){
+          if(other===item) return;
+          var ov=other.querySelector('video');
+          var os=other.querySelector('.iv-sound');
+          if(ov) ov.muted=true;
+          if(os) os.classList.remove('unmuted');
+        });
         vid.muted=!vid.muted;
         soundBtn.classList.toggle('unmuted',!vid.muted);
       });
     }
 
     /* Progress bar */
-    if(progress){
+    if(bar){
       vid.addEventListener('timeupdate',function(){
         if(vid.duration){
-          progress.style.width=(vid.currentTime/vid.duration*100)+'%';
+          bar.style.width=(vid.currentTime/vid.duration*100)+'%';
         }
       });
     }
 
-    /* Show play button again when paused */
-    vid.addEventListener('pause',function(){wrap.classList.remove('playing')});
-    vid.addEventListener('play',function(){wrap.classList.add('playing')});
+    /* Sync active class with actual video state */
+    vid.addEventListener('pause',function(){item.classList.remove('active');if(activeItem===item) activeItem=null});
+    vid.addEventListener('play',function(){item.classList.add('active');activeItem=item});
   });
 
-  /* Intersection observer: auto-play visible, pause hidden */
-  var vidIo=new IntersectionObserver(function(entries){
+  /* Intersection observer: pause videos scrolled out of view */
+  var ivIo=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      var wrap=e.target;
-      var vid=wrap.querySelector('video');
-      if(!vid) return;
-      if(e.isIntersecting){
-        vid.play().catch(function(){});
-        wrap.classList.add('playing');
-      } else {
-        vid.pause();
-        wrap.classList.remove('playing');
+      if(!e.isIntersecting){
+        var item=e.target;
+        var v=item.querySelector('video');
+        var sb=item.querySelector('.iv-sound');
+        if(v){v.pause();v.muted=true}
+        item.classList.remove('active');
+        if(sb) sb.classList.remove('unmuted');
+        if(activeItem===item) activeItem=null;
       }
     });
-  },{threshold:0.3});
-  document.querySelectorAll('[data-vid]').forEach(function(w){vidIo.observe(w)});
+  },{threshold:0.15});
+  items.forEach(function(item){ivIo.observe(item)});
 
   /* NEWSLETTER */
   var nlForm=document.getElementById('nlForm');
