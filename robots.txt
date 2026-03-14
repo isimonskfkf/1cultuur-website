@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://1cultuur.nl/sitemap.xml
+Sitemap: https://1cultuurmedia.nl/sitemap.xml
