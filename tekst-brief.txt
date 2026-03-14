@@ -1,0 +1,114 @@
+TEKST BRIEF — 1CULTUUR MEDIA WEBSITE
+Alle tekst van de homepagina en formats pagina, per sectie.
+Je AI-schrijver kan alles herschrijven en terugsturen.
+
+=====================================
+PAGINA 1: HOMEPAGINA (index.html)
+=====================================
+
+--- META / SEO ---
+Paginatitel: 1cultuur Media
+Meta description: Verhalen verbinden mensen altijd. Waar diepgang de norm is en de rauwe werkelijkheid centraal staat.
+
+--- NAVIGATIE (op elke pagina) ---
+Links: Formats | Impact | Community | Partners | Missie
+CTA-knop: Samenwerken
+
+--- HERO SECTIE ---
+Kicker: Mediahuis
+Titel: Verhalen verbinden mensen altijd.
+Subtitel: De rauwe werkelijkheid centraal. Waar diepgang de norm is.
+Knop: Bekijk de formats
+
+--- STATS BALK ---
+Stat 1: 7M+ — maandelijks bereik
+Stat 2: 100% — eigen productie
+Stat 3: 18-35 — kernpubliek
+Stat 4: 50/50 — man / vrouw
+
+--- MOBIELE MARQUEE ---
+Tekst: 55.000+ Volgers op TikTok
+
+--- NIEUWSTE PRODUCTIES SECTIE ---
+Tag: Recent
+Titel: De nieuwste producties.
+Kolom 1 label: Interview
+Kolom 1 link: Alle interviews
+Kolom 2 label: Statement
+Kolom 2 link: Alle statements
+
+--- IMPACT HIGHLIGHT SECTIE ---
+Tag: Impact
+Titel: Wanneer een verhaal miljoenen beweegt.
+Tekst alinea 1: Een vrouw deelt haar levensverhaal. De reacties leggen de maatschappij een spiegel voor.
+Tekst alinea 2: 7 miljoen kijkers binnen een week bewijzen de kracht van de ongefilterde waarheid.
+Knop: Meer cases bekijken
+Metric label: Virale doorbraak
+Metric getal: 7M+
+Metric sub: views in minder dan een week
+
+--- BEREIK STRIP SECTIE ---
+Titel: Een publiek dat terugkomt.
+Tekst: 18-35 jaar, Nederland en Belgie. Een generatie die vluchtige content negeert en kiest voor verhalen met diepgang. Bekijk de volledige publiekscijfers.
+Knop: Community bekijken
+
+--- CTA BANNER ---
+Titel: Verhaalpartner worden?
+Tekst: Merken die samenwerken worden onderdeel van de werkelijkheid.
+Knop: Bekijk de mogelijkheden
+
+--- FOOTER (op elke pagina) ---
+Merktekst: Verhalen verbinden mensen altijd. Waar diepgang de norm is en de rauwe werkelijkheid centraal staat.
+Nieuwsbrief titel: Nieuwsbrief
+Nieuwsbrief tekst: Blijf op de hoogte van nieuwe formats, samenwerkingen en behind-the-scenes content.
+Nieuwsbrief knop: Aanmelden
+Nieuwsbrief bevestiging: Aangemeld! Je hoort van ons.
+Copyright: 2026 1cultuur Media. All rights reserved.
+
+
+=====================================
+PAGINA 2: FORMATS PAGINA (formats.html)
+=====================================
+
+--- META / SEO ---
+Paginatitel: Formats — 1cultuur Media
+Meta description: Ontdek de formats van 1cultuur Media. Van ongefilterde interviews tot visuele statements in het stadsbeeld.
+
+--- PAGE HERO ---
+Kicker: Formats
+Titel: De rauwe werkelijkheid in twee formats.
+Subtitel: Elk format heeft een eigen taal, een eigen ritme. Samen vormen ze het fundament van alles wat wij maken.
+
+--- INTERVIEWS SECTIE ---
+Tag: Format 01
+Titel: Interviews
+Intro: Ongefilterde gesprekken. De mens achter de strijd in beeld. Geen gepolijste praatjes, maar de ongezouten waarheid in short-form video.
+
+Kaart 1 label: Interview
+Kaart 1 quote: "Je wilt eruit maar je komt er op dat moment niet uit."
+Kaart 1 CTA: Bekijk op TikTok
+
+Kaart 2 label: Interview
+Kaart 2 quote: "Soms is het beter om stil te zijn en niks te zeggen."
+Kaart 2 CTA: Bekijk op TikTok
+
+Kaart 3 label: Interview
+Kaart 3 quote: "De pijn gaat nooit weg maar je moet toch doorgaan."
+Kaart 3 CTA: Bekijk op TikTok
+
+--- QUOTES SECTIE ---
+Tag: Format 02
+Titel: Quotes
+Subtitel: Citaten die blijven hangen.
+Tekst: Krachtige boodschappen op borden, gedeeld via Instagram. Geen campagnes, geen ruis. Onze quotes geven mensen op een simpele en kortere manier iets om over na te denken.
+Link: Bekijk op Instagram
+
+--- DOCUMENTAIRES (COMING SOON) ---
+Tag: Binnenkort
+Badge: In ontwikkeling
+Titel: Documentaires
+Tekst: Een nieuw format is in de maak. Langere verhalen, diepere lagen. Meer informatie volgt.
+
+--- CTA BANNER ---
+Titel: Verhaalpartner worden?
+Knop: Samenwerken
