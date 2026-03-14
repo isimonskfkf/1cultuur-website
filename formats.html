@@ -122,8 +122,8 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   transition:border-color .4s,box-shadow .4s,transform .4s;
 }
 .ep-card:hover{border-color:rgba(255,122,4,.15);box-shadow:0 12px 48px rgba(255,122,4,.06);transform:translateY(-4px)}
-.ep-thumb{overflow:hidden;position:relative}
-.ep-thumb img{width:100%;height:auto;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.ep-thumb{aspect-ratio:3/4;overflow:hidden;position:relative}
+.ep-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1)}
 .ep-card:hover .ep-thumb img{transform:scale(1.04)}
 .ep-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(22,22,22,.7) 0%,transparent 50%);pointer-events:none}
 .ep-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(22,22,22,.5);border:2px solid rgba(245,242,236,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:all .35s}
@@ -212,6 +212,12 @@ p,h1,h2,h3,span,li,div{word-break:break-word;overflow-wrap:break-word}
   .sec-h2{font-size:clamp(40px,4vw,64px)}
   .cta-banner-h2{font-size:clamp(36px,4.5vw,60px)}
   .coming-soon-h3{font-size:clamp(32px,3.5vw,48px)}
+  /* ── SCROLL SNAP ─────────────────────────────────────── */
+  html{scroll-snap-type:y proximity}
+  .page-hero{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  #interviews,#statements{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+  .coming-soon{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+  .sec.cta-banner{scroll-snap-align:start;min-height:100vh}
 }
 </style>
 <!-- Structured Data -->
