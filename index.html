@@ -163,18 +163,13 @@ ul{list-style:none}
 .case-stat strong{color:var(--white);font-size:13px}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}}
 /* ── GIF MARQUEE (Desktop: verticaal, Mobiel: horizontaal) ──── */
-.gif-section{padding:var(--py) var(--px);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.gif-layout{display:flex;gap:clamp(40px,5vw,80px);align-items:center}
-.gif-text{flex:1;min-width:0}
-.gif-text .sec-tag{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(16px,2vw,24px)}
-.gif-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;margin-bottom:clamp(16px,2vw,24px)}
-.gif-text p{font-size:clamp(14px,1.1vw,17px);line-height:1.7;color:var(--grey);max-width:440px}
-.gif-cols{flex:0 0 clamp(280px,40vw,520px);display:flex;gap:12px;height:clamp(300px,30vw,420px)}
+.gif-section{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.gif-cols{display:flex;gap:clamp(12px,2vw,20px);height:clamp(340px,35vw,480px);margin-top:clamp(40px,6vw,64px)}
 .marquee-col{flex:1;position:relative;overflow:hidden;border-radius:8px}
 .marquee-col::before,.marquee-col::after{content:'';position:absolute;left:0;right:0;height:60px;z-index:2;pointer-events:none}
-.marquee-col::before{top:0;background:linear-gradient(to bottom,var(--black),transparent)}
-.marquee-col::after{bottom:0;background:linear-gradient(to top,var(--black),transparent)}
-.marquee-vtrack{display:flex;flex-direction:column;gap:12px;will-change:transform}
+.marquee-col::before{top:0;background:linear-gradient(to bottom,var(--s1),transparent)}
+.marquee-col::after{bottom:0;background:linear-gradient(to top,var(--s1),transparent)}
+.marquee-vtrack{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px);will-change:transform;backface-visibility:hidden}
 .marquee-vtrack--up{animation:mUp 50s linear infinite}
 .marquee-vtrack--down{animation:mDown 50s linear infinite}
 @keyframes mUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
@@ -189,7 +184,6 @@ ul{list-style:none}
 .mh-item{width:clamp(220px,55vw,300px);aspect-ratio:4/5;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
 .mh-item img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:768px){.gif-section{display:none}.gif-mobile{display:block}}
-@media(min-width:769px) and (max-width:1024px){.gif-cols{flex:0 0 50%}}
 /* ── COMMUNITY CAROUSEL ──────────────────────────────────────── */
 .community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .comm-rows{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px);margin-top:clamp(40px,6vw,64px)}
@@ -375,35 +369,31 @@ ul{list-style:none}
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- GIF MARQUEE — Desktop: twee verticale kolommen              -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section class="gif-section">
-  <div class="gif-layout">
-    <div class="gif-text">
-      <div class="sec-tag reveal">Producties</div>
-      <h2 class="reveal">De mens achter<br>het verhaal.</h2>
-      <p class="reveal">Elke productie begint bij een gesprek. Uiteindelijk deelt iedereen wel zijn verhaal, want iedereen heeft zijn eigen moeilijkheden.</p>
-    </div>
-    <div class="gif-cols">
-      <div class="marquee-col">
-        <div class="marquee-vtrack marquee-vtrack--down">
-          <div class="m-item"><img src="gif1.gif" alt="Interview fragment"></div>
-          <div class="m-item"><img src="gif2.gif" alt="Straatinterview"></div>
-          <div class="m-item"><img src="gif3.gif" alt="Productie behind the scenes"></div>
-          <div class="m-item"><img src="gif1.gif" alt=""></div>
-          <div class="m-item"><img src="gif2.gif" alt=""></div>
-          <div class="m-item"><img src="gif3.gif" alt=""></div>
-        </div>
+<section class="sec gif-section">
+  <div class="sec-tag reveal">Producties</div>
+  <h2 class="sec-h2 reveal">De mens achter<br>het verhaal.</h2>
+  <p class="sec-body reveal">Elke productie begint bij een gesprek. Uiteindelijk deelt iedereen wel zijn verhaal, want iedereen heeft zijn eigen moeilijkheden.</p>
+  <div class="gif-cols">
+    <div class="marquee-col">
+      <div class="marquee-vtrack marquee-vtrack--down">
+        <div class="m-item"><img src="gif1.gif" alt="Interview fragment"></div>
+        <div class="m-item"><img src="gif2.gif" alt="Straatinterview"></div>
+        <div class="m-item"><img src="gif3.gif" alt="Productie behind the scenes"></div>
+        <div class="m-item"><img src="gif1.gif" alt=""></div>
+        <div class="m-item"><img src="gif2.gif" alt=""></div>
+        <div class="m-item"><img src="gif3.gif" alt=""></div>
       </div>
-      <div class="marquee-col">
-        <div class="marquee-vtrack marquee-vtrack--up">
-          <div class="m-item"><img src="gif4.gif" alt="Diepgaand gesprek"></div>
-          <div class="m-item"><img src="gif5.gif" alt="Ongefilterd portret"></div>
-          <div class="m-item"><img src="gif6.gif" alt="Maatschappelijke productie"></div>
-          <div class="m-item"><img src="gif7.gif" alt="Interview fragment"></div>
-          <div class="m-item"><img src="gif4.gif" alt=""></div>
-          <div class="m-item"><img src="gif5.gif" alt=""></div>
-          <div class="m-item"><img src="gif6.gif" alt=""></div>
-          <div class="m-item"><img src="gif7.gif" alt=""></div>
-        </div>
+    </div>
+    <div class="marquee-col">
+      <div class="marquee-vtrack marquee-vtrack--up">
+        <div class="m-item"><img src="gif4.gif" alt="Diepgaand gesprek"></div>
+        <div class="m-item"><img src="gif5.gif" alt="Ongefilterd portret"></div>
+        <div class="m-item"><img src="gif6.gif" alt="Maatschappelijke productie"></div>
+        <div class="m-item"><img src="gif7.gif" alt="Interview fragment"></div>
+        <div class="m-item"><img src="gif4.gif" alt=""></div>
+        <div class="m-item"><img src="gif5.gif" alt=""></div>
+        <div class="m-item"><img src="gif6.gif" alt=""></div>
+        <div class="m-item"><img src="gif7.gif" alt=""></div>
       </div>
     </div>
   </div>
