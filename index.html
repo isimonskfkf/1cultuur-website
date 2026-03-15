@@ -163,12 +163,20 @@ ul{list-style:none}
 .case-stat strong{color:var(--white);font-size:13px}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}}
 /* ── COMMUNITY CAROUSEL ──────────────────────────────────────── */
-.community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.comm-track{display:flex;gap:clamp(16px,2vw,24px);margin-top:clamp(40px,6vw,64px);overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:8px;scrollbar-width:none;margin-left:calc(var(--px) * -1);margin-right:calc(var(--px) * -1);padding-left:var(--px);padding-right:var(--px)}
+.community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
+.comm-marquee{position:relative;margin-top:clamp(40px,6vw,64px);overflow:hidden;margin-left:calc(var(--px) * -1);margin-right:calc(var(--px) * -1)}
+.comm-track{display:flex;gap:clamp(12px,2vw,20px);width:max-content;animation:commScroll 40s linear infinite}
+.comm-track:hover{animation-play-state:paused}
+.comm-card{flex:0 0 auto;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .3s,transform .3s}
+.comm-card:hover{border-color:rgba(255,122,4,.2);transform:translateY(-2px)}
+.comm-card img{display:block;width:clamp(300px,30vw,420px);height:auto}
+@keyframes commScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:768px){
+.comm-track{animation:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--px)}
 .comm-track::-webkit-scrollbar{display:none}
-.comm-card{flex:0 0 clamp(280px,40vw,380px);scroll-snap-align:start;background:var(--s2);border:1px solid var(--border);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:16px}
-.comm-quote{font-size:clamp(14px,1.6vw,15px);line-height:1.75;color:rgba(245,242,236,.7);font-weight:300;flex:1}
-.comm-author{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.comm-card{scroll-snap-align:start}
+.comm-card img{width:clamp(260px,75vw,340px)}
+}
 /* ── CTA BANNER ──────────────────────────────────────────────── */
 .cta-banner{padding:var(--py) var(--px);background:var(--black);border-top:1px solid var(--border);text-align:center}
 .cta-banner h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,7vw,80px);line-height:1;margin-bottom:clamp(16px,3vw,24px)}
@@ -410,38 +418,26 @@ ul{list-style:none}
 <section class="sec community">
   <div class="sec-tag reveal">Community</div>
   <h2 class="sec-h2 reveal">Onze community<br>is jullie community.</h2>
-  <div class="comm-track">
-    <div class="comm-card">
-      <p class="comm-quote">"Je bent echt sterk het feit dat je aan iedereen denkt en je pijn aan de kant zet om anderen te beschermen."</p>
-      <cite class="comm-author">Say hi</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Fouten maken is menselijk dus je moet van je fouten en van je verleden leren vallen en op staan."</p>
-      <cite class="comm-author">MRX</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Top content, eindelijk kwaliteit tussen alles wat tegenwoordig wordt geplaatst."</p>
-      <cite class="comm-author">Afraz Khan</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Trots, wat een mooi persoon! Bepaalde mensen moeten zoals ik en jij het op de harde manie moet doen om het dan echt pas in te kunnen zien."</p>
-      <cite class="comm-author">Kijker</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Het is echt zo... alles is afhankelijk van het geloven in jezelf."</p>
-      <cite class="comm-author">Fitrah mentor</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Wijze woorden."</p>
-      <cite class="comm-author">Spilnews</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"God bless you for saying this."</p>
-      <cite class="comm-author">lientje</cite>
-    </div>
-    <div class="comm-card">
-      <p class="comm-quote">"Hoop dat je gauw na school mag meid en dat je de kappers opleiding mag gaan doen."</p>
-      <cite class="comm-author">FatbikeMamaEefAmsterdam</cite>
+  <div class="comm-marquee">
+    <div class="comm-track" id="commTrack">
+      <!-- Set 1 -->
+      <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
+      <!-- Set 2 (duplicaat voor naadloze loop) -->
+      <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
+      <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
     </div>
   </div>
 </section>
@@ -528,6 +524,11 @@ ul{list-style:none}
   /* REVEAL */
   var io=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  /* COMMUNITY CAROUSEL — verwijder duplicaten op mobiel */
+  if(window.innerWidth<=768){
+    var ct=document.getElementById('commTrack');
+    if(ct){var cards=ct.querySelectorAll('.comm-card');for(var c=8;c<cards.length;c++)cards[c].remove()}
+  }
   /* NEWSLETTER */
   var nf=document.getElementById('nlForm');
   if(nf)nf.addEventListener('submit',function(e){e.preventDefault();fetch(nf.action,{method:'POST',body:new FormData(nf),headers:{'Accept':'application/json'}}).then(function(r){if(r.ok){nf.style.display='none';document.getElementById('nlMsg').classList.add('show')}})});
