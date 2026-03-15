@@ -163,13 +163,18 @@ ul{list-style:none}
 .case-stat strong{color:var(--white);font-size:13px}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}}
 /* ── GIF MARQUEE (Desktop: verticaal, Mobiel: horizontaal) ──── */
-.gif-section{padding:var(--py) var(--px);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.gif-cols{display:flex;gap:16px;height:clamp(340px,35vw,480px)}
+.gif-section{padding:var(--py) var(--px);border-top:1px solid var(--border);border-bottom:1px solid var(--border);contain:layout style paint}
+.gif-layout{display:flex;gap:clamp(40px,5vw,80px);align-items:center}
+.gif-text{flex:1;min-width:0}
+.gif-text .sec-tag{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:clamp(16px,2vw,24px)}
+.gif-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,64px);line-height:1;margin-bottom:clamp(16px,2vw,24px)}
+.gif-text p{font-size:clamp(14px,1.1vw,17px);line-height:1.7;color:var(--grey);max-width:440px}
+.gif-cols{flex:0 0 clamp(280px,40vw,520px);display:flex;gap:12px;height:clamp(300px,30vw,420px)}
 .marquee-col{flex:1;position:relative;overflow:hidden;border-radius:8px}
-.marquee-col::before,.marquee-col::after{content:'';position:absolute;left:0;right:0;height:80px;z-index:2;pointer-events:none}
+.marquee-col::before,.marquee-col::after{content:'';position:absolute;left:0;right:0;height:60px;z-index:2;pointer-events:none}
 .marquee-col::before{top:0;background:linear-gradient(to bottom,var(--black),transparent)}
 .marquee-col::after{bottom:0;background:linear-gradient(to top,var(--black),transparent)}
-.marquee-vtrack{display:flex;flex-direction:column;gap:16px;will-change:transform}
+.marquee-vtrack{display:flex;flex-direction:column;gap:12px;will-change:transform}
 .marquee-vtrack--up{animation:mUp 50s linear infinite}
 .marquee-vtrack--down{animation:mDown 50s linear infinite}
 @keyframes mUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
@@ -184,6 +189,7 @@ ul{list-style:none}
 .mh-item{width:clamp(220px,55vw,300px);aspect-ratio:4/5;border-radius:8px;overflow:hidden;flex-shrink:0;background:var(--s2);border:1px solid var(--border)}
 .mh-item img{width:100%;height:100%;object-fit:cover;display:block}
 @media(max-width:768px){.gif-section{display:none}.gif-mobile{display:block}}
+@media(min-width:769px) and (max-width:1024px){.gif-cols{flex:0 0 50%}}
 /* ── COMMUNITY CAROUSEL ──────────────────────────────────────── */
 .community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
 .comm-rows{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px);margin-top:clamp(40px,6vw,64px)}
@@ -197,11 +203,9 @@ ul{list-style:none}
 @keyframes commR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 @media(max-width:768px){
 .comm-rows{gap:clamp(10px,3vw,16px)}
-.comm-row{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.comm-row::-webkit-scrollbar{display:none}
-.comm-track.left,.comm-track.right{animation:none}
-.comm-card{scroll-snap-align:start}
-.comm-card img{width:clamp(240px,70vw,320px)}
+.comm-card img{width:clamp(240px,60vw,300px)}
+.comm-track.left{animation:commL 25s linear infinite}
+.comm-track.right{animation:commR 25s linear infinite}
 }
 /* ── CTA BANNER ──────────────────────────────────────────────── */
 .cta-banner{padding:var(--py) var(--px);background:var(--black);border-top:1px solid var(--border);text-align:center}
@@ -372,27 +376,34 @@ ul{list-style:none}
 <!-- GIF MARQUEE — Desktop: twee verticale kolommen              -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="gif-section">
-  <div class="gif-cols">
-    <div class="marquee-col">
-      <div class="marquee-vtrack marquee-vtrack--down">
-        <div class="m-item"><img src="gif1.gif" alt="Interview fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif2.gif" alt="Straatinterview" loading="lazy"></div>
-        <div class="m-item"><img src="gif3.gif" alt="Productie behind the scenes" loading="lazy"></div>
-        <div class="m-item"><img src="gif1.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif2.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif3.gif" alt="" loading="lazy"></div>
-      </div>
+  <div class="gif-layout">
+    <div class="gif-text">
+      <div class="sec-tag reveal">Producties</div>
+      <h2 class="reveal">De mens achter<br>het verhaal.</h2>
+      <p class="reveal">Elke productie begint bij een gesprek. Geen script, geen regie. Alleen de waarheid van mensen die het verdienen om gehoord te worden.</p>
     </div>
-    <div class="marquee-col">
-      <div class="marquee-vtrack marquee-vtrack--up">
-        <div class="m-item"><img src="gif4.gif" alt="Diepgaand gesprek" loading="lazy"></div>
-        <div class="m-item"><img src="gif5.gif" alt="Ongefilterd portret" loading="lazy"></div>
-        <div class="m-item"><img src="gif6.gif" alt="Maatschappelijke productie" loading="lazy"></div>
-        <div class="m-item"><img src="gif7.gif" alt="Interview fragment" loading="lazy"></div>
-        <div class="m-item"><img src="gif4.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif5.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif6.gif" alt="" loading="lazy"></div>
-        <div class="m-item"><img src="gif7.gif" alt="" loading="lazy"></div>
+    <div class="gif-cols">
+      <div class="marquee-col">
+        <div class="marquee-vtrack marquee-vtrack--down">
+          <div class="m-item"><img src="gif1.gif" alt="Interview fragment" loading="lazy"></div>
+          <div class="m-item"><img src="gif2.gif" alt="Straatinterview" loading="lazy"></div>
+          <div class="m-item"><img src="gif3.gif" alt="Productie behind the scenes" loading="lazy"></div>
+          <div class="m-item"><img src="gif1.gif" alt="" loading="lazy"></div>
+          <div class="m-item"><img src="gif2.gif" alt="" loading="lazy"></div>
+          <div class="m-item"><img src="gif3.gif" alt="" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="marquee-col">
+        <div class="marquee-vtrack marquee-vtrack--up">
+          <div class="m-item"><img src="gif4.gif" alt="Diepgaand gesprek" loading="lazy"></div>
+          <div class="m-item"><img src="gif5.gif" alt="Ongefilterd portret" loading="lazy"></div>
+          <div class="m-item"><img src="gif6.gif" alt="Maatschappelijke productie" loading="lazy"></div>
+          <div class="m-item"><img src="gif7.gif" alt="Interview fragment" loading="lazy"></div>
+          <div class="m-item"><img src="gif4.gif" alt="" loading="lazy"></div>
+          <div class="m-item"><img src="gif5.gif" alt="" loading="lazy"></div>
+          <div class="m-item"><img src="gif6.gif" alt="" loading="lazy"></div>
+          <div class="m-item"><img src="gif7.gif" alt="" loading="lazy"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -607,16 +618,6 @@ ul{list-style:none}
   /* REVEAL */
   var io=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-  /* COMMUNITY CAROUSEL — verwijder duplicaten op mobiel */
-  if(window.innerWidth<=768){
-    ['commRow1','commRow2'].forEach(function(id){
-      var el=document.getElementById(id);
-      if(!el)return;
-      var items=el.children;
-      var half=Math.ceil(items.length/2);
-      while(items.length>half)items[items.length-1].remove();
-    });
-  }
   /* NEWSLETTER */
   var nf=document.getElementById('nlForm');
   if(nf)nf.addEventListener('submit',function(e){e.preventDefault();fetch(nf.action,{method:'POST',body:new FormData(nf),headers:{'Accept':'application/json'}}).then(function(r){if(r.ok){nf.style.display='none';document.getElementById('nlMsg').classList.add('show')}})});
