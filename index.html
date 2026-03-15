@@ -164,7 +164,7 @@ ul{list-style:none}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}}
 /* ── GIF MARQUEE (Desktop: verticaal, Mobiel: horizontaal) ──── */
 .gif-section{padding:var(--py) var(--px);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.gif-cols{display:flex;gap:16px;height:clamp(500px,60vw,700px)}
+.gif-cols{display:flex;gap:16px;height:clamp(340px,35vw,480px)}
 .marquee-col{flex:1;position:relative;overflow:hidden;border-radius:8px}
 .marquee-col::before,.marquee-col::after{content:'';position:absolute;left:0;right:0;height:80px;z-index:2;pointer-events:none}
 .marquee-col::before{top:0;background:linear-gradient(to bottom,var(--black),transparent)}
@@ -186,23 +186,20 @@ ul{list-style:none}
 @media(max-width:768px){.gif-section{display:none}.gif-mobile{display:block}}
 /* ── COMMUNITY CAROUSEL ──────────────────────────────────────── */
 .community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-@media(max-width:768px){.community{overflow:visible}}
 .comm-rows{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px);margin-top:clamp(40px,6vw,64px)}
 .comm-row{overflow:hidden}
 .comm-track{display:flex;gap:clamp(12px,2vw,20px);width:max-content}
 .comm-track.left{animation:commL 35s linear infinite}
 .comm-track.right{animation:commR 35s linear infinite}
-.comm-track:hover{animation-play-state:paused}
-.comm-card{flex:0 0 auto;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .3s,transform .3s}
-.comm-card:hover{border-color:rgba(255,122,4,.2);transform:translateY(-2px)}
+.comm-card{flex:0 0 auto;border-radius:6px;overflow:hidden;border:1px solid var(--border)}
 .comm-card img{display:block;width:clamp(280px,28vw,400px);height:auto}
 @keyframes commL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes commR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 @media(max-width:768px){
 .comm-rows{gap:clamp(10px,3vw,16px)}
-.comm-row{overflow:visible}
-.comm-track.left,.comm-track.right{animation:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--px)}
-.comm-track::-webkit-scrollbar{display:none}
+.comm-row{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.comm-row::-webkit-scrollbar{display:none}
+.comm-track.left,.comm-track.right{animation:none}
 .comm-card{scroll-snap-align:start}
 .comm-card img{width:clamp(240px,70vw,320px)}
 }
