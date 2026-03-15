@@ -162,20 +162,40 @@ ul{list-style:none}
 .case-stat{font-family:'Syne',sans-serif;font-size:11px;color:var(--grey);font-weight:600;letter-spacing:1px}
 .case-stat strong{color:var(--white);font-size:13px}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}}
+/* ── CONTENT MARQUEE ─────────────────────────────────────────── */
+.content-marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:clamp(24px,4vw,40px) 0}
+.cm-track{display:flex;gap:clamp(12px,2vw,20px);width:max-content;animation:cmLeft 30s linear infinite}
+.cm-track:hover{animation-play-state:paused}
+.cm-item{flex:0 0 auto;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .3s,transform .3s}
+.cm-item:hover{border-color:rgba(255,122,4,.2);transform:translateY(-2px)}
+.cm-item img{display:block;width:clamp(200px,22vw,300px);height:auto}
+@keyframes cmLeft{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(max-width:768px){
+.cm-track{animation:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--px)}
+.cm-track::-webkit-scrollbar{display:none}
+.cm-item{scroll-snap-align:start}
+.cm-item img{width:clamp(200px,65vw,280px)}
+}
 /* ── COMMUNITY CAROUSEL ──────────────────────────────────────── */
 .community{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}
-.comm-marquee{position:relative;margin-top:clamp(40px,6vw,64px);overflow:hidden;margin-left:calc(var(--px) * -1);margin-right:calc(var(--px) * -1)}
-.comm-track{display:flex;gap:clamp(12px,2vw,20px);width:max-content;animation:commScroll 40s linear infinite}
+.comm-rows{display:flex;flex-direction:column;gap:clamp(12px,2vw,20px);margin-top:clamp(40px,6vw,64px)}
+.comm-row{overflow:hidden}
+.comm-track{display:flex;gap:clamp(12px,2vw,20px);width:max-content}
+.comm-track.left{animation:commL 35s linear infinite}
+.comm-track.right{animation:commR 35s linear infinite}
 .comm-track:hover{animation-play-state:paused}
 .comm-card{flex:0 0 auto;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .3s,transform .3s}
 .comm-card:hover{border-color:rgba(255,122,4,.2);transform:translateY(-2px)}
-.comm-card img{display:block;width:clamp(300px,30vw,420px);height:auto}
-@keyframes commScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.comm-card img{display:block;width:clamp(280px,28vw,400px);height:auto}
+@keyframes commL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes commR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 @media(max-width:768px){
-.comm-track{animation:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--px)}
+.comm-rows{gap:clamp(10px,3vw,16px)}
+.comm-row{overflow:visible}
+.comm-track.left,.comm-track.right{animation:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:0 var(--px)}
 .comm-track::-webkit-scrollbar{display:none}
 .comm-card{scroll-snap-align:start}
-.comm-card img{width:clamp(260px,75vw,340px)}
+.comm-card img{width:clamp(240px,70vw,320px)}
 }
 /* ── CTA BANNER ──────────────────────────────────────────────── */
 .cta-banner{padding:var(--py) var(--px);background:var(--black);border-top:1px solid var(--border);text-align:center}
@@ -343,6 +363,26 @@ ul{list-style:none}
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
+<!-- CONTENT MARQUEE                                             -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="content-marquee">
+  <div class="cm-track" id="cmTrack">
+    <div class="cm-item"><img src="media/web/thumb-3.jpg" alt="Sunita vertelt haar verhaal" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-1.jpg" alt="Straatinterview over levensmomenten" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-2.jpg" alt="Straatinterview over stilte" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-3.jpg" alt="Sunita vertelt haar verhaal" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-1.jpg" alt="Straatinterview over levensmomenten" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-2.jpg" alt="Straatinterview over stilte" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-3.jpg" alt="Sunita vertelt haar verhaal" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-1.jpg" alt="Straatinterview over levensmomenten" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-2.jpg" alt="Straatinterview over stilte" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-3.jpg" alt="Sunita vertelt haar verhaal" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-1.jpg" alt="Straatinterview over levensmomenten" loading="lazy"></div>
+    <div class="cm-item"><img src="media/web/thumb-2.jpg" alt="Straatinterview over stilte" loading="lazy"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
 <!-- THREE PILLARS                                              -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="sec pillars">
@@ -381,9 +421,9 @@ ul{list-style:none}
   <div class="sec-tag reveal">Uitgelicht</div>
   <h2 class="sec-h2 reveal">Verhalen die<br>miljoenen raken.</h2>
   <div class="cases-grid">
-    <a href="https://vm.tiktok.com/ZGdua2QTh/" target="_blank" rel="noopener noreferrer" class="case-card reveal">
+    <a href="https://vm.tiktok.com/ZGdumS5Q4/" target="_blank" rel="noopener noreferrer" class="case-card reveal">
       <div class="case-thumb">
-        <img src="media/web/thumb-1.jpg" alt="Sunita deelt haar levensverhaal" loading="lazy">
+        <img src="media/web/thumb-3.jpg" alt="Sunita deelt haar levensverhaal" loading="lazy">
         <div class="case-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
       </div>
       <div class="case-info">
@@ -395,9 +435,9 @@ ul{list-style:none}
         </div>
       </div>
     </a>
-    <a href="https://vm.tiktok.com/ZGdumS5Q4/" target="_blank" rel="noopener noreferrer" class="case-card reveal" style="transition-delay:.1s">
+    <a href="https://vm.tiktok.com/ZGdua2QTh/" target="_blank" rel="noopener noreferrer" class="case-card reveal" style="transition-delay:.1s">
       <div class="case-thumb">
-        <img src="media/web/thumb-2.jpg" alt="Wat is een moment in jouw leven" loading="lazy">
+        <img src="media/web/thumb-1.jpg" alt="Wat is een moment in jouw leven" loading="lazy">
         <div class="case-play"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
       </div>
       <div class="case-info">
@@ -418,26 +458,32 @@ ul{list-style:none}
 <section class="sec community">
   <div class="sec-tag reveal">Community</div>
   <h2 class="sec-h2 reveal">Onze community<br>is jullie community.</h2>
-  <div class="comm-marquee">
-    <div class="comm-track" id="commTrack">
-      <!-- Set 1 -->
-      <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
-      <!-- Set 2 (duplicaat voor naadloze loop) -->
-      <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
-      <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
+  <div class="comm-rows">
+    <!-- Rij 1: scrollt naar links -->
+    <div class="comm-row">
+      <div class="comm-track left" id="commRow1">
+        <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-1.jpg" alt="Reactie van Say hi" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-2.jpg" alt="Reactie van MRX" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-3.jpg" alt="Reactie van Spilnews" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-4.jpg" alt="Reactie van kijker" loading="lazy"></div>
+      </div>
+    </div>
+    <!-- Rij 2: scrollt naar rechts -->
+    <div class="comm-row">
+      <div class="comm-track right" id="commRow2">
+        <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-5.jpg" alt="Reactie van lientje" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-6.jpg" alt="Reactie van Afraz Khan" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-7.jpg" alt="Reactie van FatbikeMamaEefAmsterdam" loading="lazy"></div>
+        <div class="comm-card"><img src="media/community/reaction-8.jpg" alt="Reactie van Fitrah mentor" loading="lazy"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -524,10 +570,15 @@ ul{list-style:none}
   /* REVEAL */
   var io=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('on');io.unobserve(en.target)}})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-  /* COMMUNITY CAROUSEL — verwijder duplicaten op mobiel */
+  /* CAROUSELS — verwijder duplicaten op mobiel */
   if(window.innerWidth<=768){
-    var ct=document.getElementById('commTrack');
-    if(ct){var cards=ct.querySelectorAll('.comm-card');for(var c=8;c<cards.length;c++)cards[c].remove()}
+    ['commRow1','commRow2','cmTrack'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el)return;
+      var items=el.children;
+      var half=Math.ceil(items.length/2);
+      while(items.length>half)items[items.length-1].remove();
+    });
   }
   /* NEWSLETTER */
   var nf=document.getElementById('nlForm');
