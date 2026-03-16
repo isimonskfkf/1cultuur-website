@@ -83,6 +83,9 @@ ul{list-style:none}
 .sec-body{font-size:clamp(14px,1.2vw,15px);line-height:1.8;color:rgba(245,242,236,.5);font-weight:300;max-width:60ch}
 /* ── MANIFEST ────────────────────────────────────────────────── */
 .manifest{background:var(--s1);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* ── HERO IMAGE STRIP ────────────────────────────────────────── */
+.page-strip{width:100%;overflow:hidden;max-height:clamp(240px,35vw,480px);border-bottom:1px solid var(--border)}
+.page-strip img{width:100%;height:100%;object-fit:cover;display:block}
 .manifest-text{max-width:64ch;font-size:clamp(14px,1.2vw,16px);line-height:1.85;color:rgba(245,242,236,.6);font-weight:300}
 .manifest-text p{margin-bottom:clamp(20px,3vw,28px)}
 .manifest-text strong{color:var(--white);font-weight:500}
@@ -196,6 +199,11 @@ ul{list-style:none}
   <h1 class="page-h1" style="opacity:0;animation:fadeUp .9s ease forwards .4s">Het verhaal achter<br><em>het verhaal.</em></h1>
   <p class="page-sub" style="opacity:0;animation:fadeUp .9s ease forwards .6s">De menselijkheid in verhalen die ons werkelijk verbinden, vastgelegd in de momenten dat we echt naar elkaar luisteren.</p>
 </section>
+
+<!-- HERO IMAGE -->
+<div class="page-strip">
+  <img src="media/web/statement-2.jpg" alt="1cultuur Media productie">
+</div>
 
 <!-- MANIFEST -->
 <section class="sec manifest">
