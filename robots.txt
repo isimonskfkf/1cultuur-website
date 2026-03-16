@@ -1,4 +1,17 @@
+# 1cultuur Media - robots.txt
+# https://1cultuurmedia.nl
+
 User-agent: *
 Allow: /
+Disallow: /media/community/
+Disallow: /*.gif$
 
+# Sitemap
 Sitemap: https://1cultuurmedia.nl/sitemap.xml
+
+# Crawl-delay (vriendelijk voor servers)
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
